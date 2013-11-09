@@ -1,6 +1,8 @@
 require 'spec_helper'
 
-# name, desc, cost, start_location, end_location, destination_location, estimated_time, total_time, started, completed,
+# name, desc, cost, start_location, end_location, destination_location, 
+# estimated_time, total_time, started, completed, creator, owner, passes
+# group_id, priority, category, karma_value 
 
 describe Task do
   it "has a name attribute" do
@@ -73,18 +75,18 @@ describe Task do
   	task.ended.should == false
   end
 
-  it "has a assigner attribute" do
+  it "has a creator attribute" do
   	task = Task.new
   	task.assigner = 5039283
   	task.save
   	task.assigner.should == 5039283
   end
 
-  it "has a acceptor attribute" do
+  it "has a owner attribute" do
   	task = Task.new
-  	task.acceptor = 393838
+  	task.owner = 393838
   	task.save
-  	task.acceptor.should == 393838
+  	task.owner.should == 393838
   end
 
   it "has a passes attribute" do
@@ -94,5 +96,42 @@ describe Task do
   	task.passes.should == 2
   end
 
-  
+
+  it "has a group_id attribute" do
+  	task = Task.new
+  	task.group_id = 74893
+  	task.save
+  	task.group_id.should == 74893
+  end
+
+  it "has a priority attribute" do
+  	task = Task.new
+  	task.priority = "Urgent"
+  	task.save
+  	task.group_id.should == "Urgent"
+  end
+
+  it " has a category attribute" do
+  	task = Task.new
+  	task.category = 'errand'
+  	task.save
+  	task.category.should == 'errand'
+  end
+
+  it "has a karma_value attribute" do
+  	task = Task.new
+  	task.karma_value = 300
+  	task.save
+  	task.karma_value.should == 300
+  end
+
+  it "has and belongs to many groups" do
+  	t = Task.reflect_on_association(:groups)
+  	t.macro.should == :has_and_belongs_to_many
+  end
+
+  it "has and belongs to many users" do
+  	t = Task.reflect_on_association(:users)
+  	t.macro.should == :has_and_belongs_to_many
+  end
 end
