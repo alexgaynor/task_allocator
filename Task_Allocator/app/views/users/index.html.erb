@@ -10,21 +10,16 @@
 <!-- menu -->
 <div id="login-wrap">
   <div id="logged_in_menu" class="inactive">
-    <%= link_to 'Update Profile', edit_user_registration_path %> | 
-    <a href="#" id="logout_link">Logout</a>
-  </div>
-  <div id="logged_out_menu" class="inactive">
-    <div class="links">
-      <div id="sign-up-link" data-reveal-id="sign_up_modal">Sign Up</div> || <div id="sign-in-link" data-reveal-id="sign_in_modal">Sign In</div>
-    </div>
+    <li><%= link_to 'Update Profile', edit_user_registration_path %></li>
+    <li><a href="#" id="logout_link">Logout</a></li>
   </div>
 </div>
 
 <!-- slideout modals -->
-<div id="sign-up-cont" class="inactive">
-  <%= render partial: "sign_up" %>
-</div>
-
 <div id="sign-in-cont">
   <%= render partial: "sign_in" %>
+</div>
+
+<div id="sign-up-cont" class="inactive">
+  <%= render partial: "sign_up" %>
 </div>
