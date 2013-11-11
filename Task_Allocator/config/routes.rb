@@ -1,6 +1,7 @@
 TaskAllocator::Application.routes.draw do
-  devise_for :users, :controllers => { :registrations => "registrations", sessions: "sessions" }
+  devise_for :users
 
-  root 'users#index'
+  root :to => 'splash#index'
+  get '/dashboard', :to => 'dashboard#index'
 
 end

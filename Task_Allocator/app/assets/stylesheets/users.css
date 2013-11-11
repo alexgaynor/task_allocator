@@ -1,5 +1,7 @@
 
 .inactive {
+	display:none;
+}
 /*	visibility: hidden;
 	display:none;*/
 }
@@ -89,7 +91,10 @@
 .login_form input[type=text]:focus {
     outline: none;
 }
+<<<<<<< HEAD
 
 .login_form input[type=submit] {
 	background: blue;
 }
+=======
+>>>>>>> e9f0b5ac79bd9b0ad64ba681dc190ec600f4ebfe
