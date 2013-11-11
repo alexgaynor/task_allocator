@@ -1,5 +1,4 @@
-var app,
-		username;
+var app, username;
 
 $(function() {
 	// activate sign up modal form
@@ -82,7 +81,15 @@ $(function() {
 	} else {
 		app.loggedOut();
 	}
-
+	var signUpLink = $('#sign-up-link');
+	var signInLink = $('#sign-in-link');
+	var signUpForm = $('#sign-up-cont');
+	signUpLink.click(function () {
+		console.log('in the click');
+		signUpForm.removeClass('inactive');
+		// signUpForm.removeClass('inactive');
+		signUpForm.fadeIn(1000);
+	});
 
 
 });

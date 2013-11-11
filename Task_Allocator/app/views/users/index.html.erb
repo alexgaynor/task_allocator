@@ -14,13 +14,17 @@
     <a href="#" id="logout_link">Logout</a>
   </div>
   <div id="logged_out_menu" class="inactive">
-    <div id="sign-up-cont" data-reveal-id="sign_up_modal">Sign Up</div> | 
-    <a href="#" data-reveal-id="sign_in_modal">Sign In</a>
-    <div id="sign-in-cont"><%= link_to "Sign In", new_user_session_path %></div>
+    <div class="links">
+      <div id="sign-up-link" data-reveal-id="sign_up_modal">Sign Up</div> || <div id="sign-in-link" data-reveal-id="sign_in_modal">Sign In</div>
+    </div>
   </div>
 </div>
 
 <!-- slideout modals -->
+<div id="sign-up-cont" class="inactive">
+  <%= render partial: "sign_up" %>
+</div>
 
-<%= render partial: "sign_up" %>
-<%= render partial: "sign_in" %>
+<div id="sign-in-cont">
+  <%= render partial: "sign_in" %>
+</div>
