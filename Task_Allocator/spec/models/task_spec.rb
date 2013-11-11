@@ -12,7 +12,7 @@ describe Task do
   	task.name.should == "Pick up Milk"
   end
 
-  it "has a desc attribute" do
+  it "has a description attribute" do
   	task = Task.new
   	task.desc = "Would someone please pick up the milk at A&P"
   	task.save
@@ -47,18 +47,18 @@ describe Task do
   	task.estimated_time.should == 7200
   end
 
-  it "has a accept_time attribute" do 
+  it "has a accepted at time attribute" do 
   	task = Task.new
-  	task.accept_time = Time.new(2013, 11, 10, 5, 30)
+  	task.accepted_at_time = 123456
   	task.save
-  	task.accept_time.should == Time.gm(2013, 11, 10, 5, 30)
+  	task.accepted_at_time.should == 123456
   end
 
-  it "has a complete_time attribute" do
+  it "has a completed at time attribute" do
   	task = Task.new
-  	task.complete_time = Time.new(2013, 11, 10, 6, 30)
+  	task.completed_at_time = 123456
   	task.save
-  	task.complete_time.should == Time.gm(2013, 11, 10, 5, 30)
+  	task.completed_at_time.should == 123456
   end
 
   it "has a started attribute" do
@@ -68,18 +68,18 @@ describe Task do
   	task.started.should == true
   end
 
-  it "has a ended attribute" do
+  it "has a completed attribute" do
   	task = Task.new
-  	task.ended = false
+  	task.completed = false
   	task.save
-  	task.ended.should == false
+  	task.completed.should == false
   end
 
   it "has a creator attribute" do
   	task = Task.new
-  	task.assigner = 5039283
+  	task.creator = 5039283
   	task.save
-  	task.assigner.should == 5039283
+  	task.creator.should == 5039283
   end
 
   it "has a owner attribute" do
@@ -108,7 +108,7 @@ describe Task do
   	task = Task.new
   	task.priority = "Urgent"
   	task.save
-  	task.group_id.should == "Urgent"
+  	task.priority.should == "Urgent"
   end
 
   it " has a category attribute" do
@@ -123,6 +123,27 @@ describe Task do
   	task.karma_value = 300
   	task.save
   	task.karma_value.should == 300
+  end
+
+  it "has a total time attribute" do
+    task = Task.new
+    task.total_time = 123456
+    task.save
+    task.total_time.should == 123456
+  end
+
+  it "has a cost attribute" do
+    task = Task.new
+    task.cost = 12
+    task.save
+    task.cost.should == 12
+  end
+
+  it "has a flaker id attribute" do
+    task = Task.new
+    task.flaker_id = 5
+    task.save
+    task.flaker_id.should == 5
   end
 
   it "has and belongs to many groups" do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111040851) do
+ActiveRecord::Schema.define(version: 20131111150747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,10 @@ ActiveRecord::Schema.define(version: 20131111040851) do
     t.integer  "karma_value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "accepted_at_time"
+    t.integer  "completed_at_time"
+    t.integer  "cost"
+    t.integer  "flaker_id"
   end
 
   create_table "users", force: true do |t|

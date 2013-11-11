@@ -14,13 +14,14 @@ class Task < ActiveRecord::Base
 	validates :group_id, presence: true
 	validates :priority, presence: true
 	validates :category, presence: true
-	validates :karma_value, presence: true, numerically: { only_integer: true }
+	validates :karma_value, presence: true, numericality: { only_integer: true }
 
 
 	belongs_to :users, polymorphic: true
 	has_many :users, as: :creator
 	has_many :users, as: :owner
 
+	has_and_belongs_to_many :users
 	has_and_belongs_to_many :groups
 
 
