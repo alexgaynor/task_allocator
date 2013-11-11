@@ -1,0 +1,42 @@
+<div id="sign_up_modal" class="reveal-modal medium">
+  <h3>Sign up</h3> 
+  
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "sign_up_user"}) do |f| %>
+    <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+    <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :username %><br />
+  <%= f.text_field :username %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.label :firstname %><br />
+  <%= f.text_field :firstname %></div>
+
+  <div><%= f.label :lastname %><br />
+  <%= f.text_field :lastname %></div>
+
+  <div><%= f.label :nickname %><br />
+  <%= f.text_field :nickname %></div>
+
+  <div><%= f.label :role %><br />
+  <%= f.text_field :role %></div>
+
+  <div><%= f.label :phone_number %><br />
+  <%= f.text_field :phone_num %></div>
+
+  <div><%= f.label :profile_picture %><br />
+  <%= f.text_field :prof_pic %></div>
+
+  <div><%= f.submit "Sign up" %></div>
+  <% end %>
+
+  <a href="/users/password/new">Forgot your password?</a>
+
+</div>

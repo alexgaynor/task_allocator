@@ -1,19 +1,5 @@
 .inactive {
-	visibility: hidden;
 	display:none;
-}
-
-.sign-up-form-cont {
-	width:300px;
-	height:600px;
-	margin:auto;
-	background:navy;
-	color:white;
-	text-align: center;
-	font-size: 16px;
-}
-.sign-up-form-cont a{
-	color:white;
 }
 #sign-up-link {
 	display:inline-block;
