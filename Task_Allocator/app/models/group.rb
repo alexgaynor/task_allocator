@@ -5,4 +5,7 @@ class Group < ActiveRecord::Base
 	validates :homebase_location, presence: true
 	validates :group_type, presence: true
 
+	has_and_belongs_to_many :users
+	has_many :tasks
+
 end

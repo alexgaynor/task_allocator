@@ -13,16 +13,16 @@ describe Group do
 
   it "has a valid group description" do
   	group = Group.new
-  	group.group_description = "A loving family with 3 sons and an awesome tiger-like-striped dog."
+  	group.group_desc = "A loving family with 3 sons and an awesome tiger-like-striped dog."
   	group.save
-  	group.group_description.should == "A loving family with 3 sons and an awesome tiger-like-striped dog."
+  	group.group_desc.should == "A loving family with 3 sons and an awesome tiger-like-striped dog."
   end
 
   it "has a valid home address" do
   	group = Group.new
-  	group.home_address = "99 Cherry Lane, New York, NY 10017"
+  	group.homebase_location = "99 Cherry Lane, New York, NY 10017"
   	group.save
-  	group.home_address.should == "99 Cherry Lane, New York, NY 10017"
+  	group.homebase_location.should == "99 Cherry Lane, New York, NY 10017"
   end
 
   it "has a valid group type" do

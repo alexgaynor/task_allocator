@@ -11,4 +11,7 @@ class User < ActiveRecord::Base
   	self.where("email = ?", conditions[:email]).limit(1).first
 	end
 
+  has_and_belongs_to_many :groups
+  has_many :tasks
+
 end

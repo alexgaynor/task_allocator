@@ -48,7 +48,7 @@ describe User do
 
 	it "has a valid password" do
 		user = User.new
-		uesr.password = "password"
+		user.password = "password"
 		user.save
 		user.password.should == "password"
 	end

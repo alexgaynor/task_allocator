@@ -21,6 +21,7 @@ class Task < ActiveRecord::Base
 	has_many :users, as: :creator
 	has_many :users, as: :owner
 
+	has_and_belongs_to_many :users
 	has_and_belongs_to_many :groups
 
 
