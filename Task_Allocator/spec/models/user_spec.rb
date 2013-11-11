@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-# username, firstname, lastname, nickname, email, password, phone_num, prof_pic
+# username, firstname, lastname, nickname, role, email, password, phone_num, prof_pic
 
 describe User do
   
@@ -30,6 +30,13 @@ describe User do
 		user.nickname = "A-dawg"
 		user.save
 		user.nickname.should == "A-dawg"
+	end
+
+	it "has a valid role" do
+		user = User.new
+		user.role = "mom"
+		user.save
+		user.role.should == "mom"
 	end
 
 	it "has a valid email" do
