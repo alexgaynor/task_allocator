@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: Task_Allocator_development
+  database: task_allocator_development
   pool: 5
   username: AEG
   host: localhost
