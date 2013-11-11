@@ -15,6 +15,10 @@
 	display:inline-block;
 }
 
+#sign_in_modal a:hover {
+	color: #88C4B8;
+}
+
 .login_form {
 	width: 300px;
 	margin: 60px auto 30px;
@@ -77,13 +81,13 @@
 .login_form input[type=email]:hover ~ i,
 .login_form input[type=password]:hover ~ i,
 .login_form input[type=text]:hover ~ i {
-    color: #52cfeb;
+    color: #F19181;
 }
  
 .login_form input[type=email]:focus ~ i,
 .login_form input[type=password]:focus ~ i,
 .login_form input[type=text]:focus ~ i {
-    color: #42A2BC;
+    color: #F19181;
 }
  
 .login_form input[type=email]:focus,
@@ -91,10 +95,14 @@
 .login_form input[type=text]:focus {
     outline: none;
 }
-<<<<<<< HEAD
 
 .login_form input[type=submit] {
-	background: blue;
+	background-color: #88C4B8;
+	color: #FFFFFF;
+	border-radius: 3px 3px 3px 3px;      
+	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+	padding: 6px;
+	width: 300px;
 }
-=======
->>>>>>> e9f0b5ac79bd9b0ad64ba681dc190ec600f4ebfe
+
+	

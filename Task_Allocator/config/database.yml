@@ -19,7 +19,8 @@ development:
   encoding: unicode
   database: task_allocator_development
   pool: 5
-  username: AEG
+  username: Sunmi
+  password:
   host: localhost
 
   # Connect on a TCP socket. Omitted by default since the client uses a

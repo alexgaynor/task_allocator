@@ -1,40 +1,50 @@
-<div id="sign_up_modal" class="reveal-modal medium">
+<div id="sign_up_modal" class="reveal-modal medium login_form">
   <h3>Sign up</h3> 
   
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => "sign_up_user"}) do |f| %>
     <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-    <%= f.email_field :email, :autofocus => true %></div>
+    <p class="field"><%= f.email_field :email, :autofocus => true, placeholder: "email" %>
+      <i class="fa fa-envelope fa-lg"></i>
+    </p>
 
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username %></div>
+    <p class="field"><%= f.text_field :username, placeholder: "username" %>
+      <i class="fa fa-user fa-lg"></i>
+    </p>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+    <p class="field"><%= f.password_field :password, placeholder: "password" %>
+      <i class="fa fa-lock fa-lg"></i>
+    </p>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+    <p class="field"><%= f.password_field :password_confirmation, placeholder: "password confirmation" %>
+      <i class="fa fa-lock fa-lg"></i>
+    </p>
 
-  <div><%= f.label :firstname %><br />
-  <%= f.text_field :firstname %></div>
+    <p class="field"><%= f.text_field :firstname, placeholder: "firstname" %>
+      <i class="fa fa-user fa-lg"></i>
+    </p>
 
-  <div><%= f.label :lastname %><br />
-  <%= f.text_field :lastname %></div>
+    <p class="field"><%= f.text_field :lastname, placeholder: "lastname" %>
+      <i class="fa fa-user fa-lg"></i>
+    </p>
 
-  <div><%= f.label :nickname %><br />
-  <%= f.text_field :nickname %></div>
+    <p class="field"><%= f.text_field :nickname, placeholder: "nickname" %>
+      <i class="fa fa-user fa-lg"></i>
+    </p>
 
-  <div><%= f.label :role %><br />
-  <%= f.text_field :role %></div>
+    <p class="field"><%= f.text_field :role, placeholder: "role" %>
+      <i class="fa fa-users fa-lg"></i>
+    </p>
 
-  <div><%= f.label :phone_number %><br />
-  <%= f.text_field :phone_num %></div>
+    <p class="field"><%= f.text_field :phone_num, placeholder: "phone number" %>
+      <i class="fa fa-phone fa-lg"></i>
+    </p>
 
-  <div><%= f.label :profile_picture %><br />
-  <%= f.text_field :prof_pic %></div>
+    <p class="field"><%= f.text_field :prof_pic, placeholder: "profile picture" %>
+      <i class="fa fa-camera fa-lg"></i>
+    </p>
 
-  <div><%= f.submit "Sign up" %></div>
+    <div><%= f.submit "Sign up" %></div>
   <% end %>
 
   <a href="/users/password/new">Forgot your password?</a>
