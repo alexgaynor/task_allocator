@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111150747) do
+ActiveRecord::Schema.define(version: 20131111225154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "creators_tasks", force: true do |t|
+    t.integer "creator_id"
+    t.integer "task_id"
+  end
+
+  create_table "flakers_tasks", force: true do |t|
+    t.integer "flaker_id"
+    t.integer "task_id"
+  end
 
   create_table "groups", force: true do |t|
     t.string   "group_name"
@@ -23,6 +33,19 @@ ActiveRecord::Schema.define(version: 20131111150747) do
     t.string   "group_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address_street"
+    t.integer  "address_zipcode"
+    t.string   "address_state"
+  end
+
+  create_table "groups_users_tables", force: true do |t|
+    t.integer "group_id"
+    t.integer "task_id"
+  end
+
+  create_table "owners_tasks", force: true do |t|
+    t.integer "owner_id"
+    t.integer "task_id"
   end
 
   create_table "tasks", force: true do |t|
@@ -74,6 +97,8 @@ ActiveRecord::Schema.define(version: 20131111150747) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tot_karma"
+    t.integer  "tot_flakes"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
