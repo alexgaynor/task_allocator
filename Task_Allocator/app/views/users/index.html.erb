@@ -1,20 +1,4 @@
-<!-- add authenticity token -->
-<%= javascript_tag "window._token = '#{form_authenticity_token}';" %>
-<!-- check if user signed in -->
-<% if current_user %>
-  <%= javascript_tag "window._current_user_username = '#{current_user.username}';" %>
-<% else %>
-  <%= javascript_tag "window._current_user_username = '';" %>
-<% end %>
-
 <!-- menu -->
-<div id="login-wrap">
-  <div id="logged_in_menu" class="inactive">
-    <li><%= link_to 'Update Profile', edit_user_registration_path %></li>
-    <li><a href="#" id="logout_link">Logout</a></li>
-  </div>
-</div>
-
 <!-- slideout modals -->
 <div id="sign-in-cont">
   <%= render partial: "sign_in" %>
