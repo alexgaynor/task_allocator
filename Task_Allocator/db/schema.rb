@@ -11,20 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111235354) do
+ActiveRecord::Schema.define(version: 20131112225938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "creators_tasks", force: true do |t|
-    t.integer "creator_id"
-    t.integer "task_id"
-  end
-
-  create_table "flakers_tasks", force: true do |t|
-    t.integer "flaker_id"
-    t.integer "task_id"
-  end
 
   create_table "groups", force: true do |t|
     t.string   "group_name"
@@ -36,16 +26,12 @@ ActiveRecord::Schema.define(version: 20131111235354) do
     t.string   "address_street"
     t.integer  "address_zipcode"
     t.string   "address_state"
+    t.integer  "creator_id"
   end
 
   create_table "groups_users", force: true do |t|
     t.integer "group_id"
-    t.integer "task_id"
-  end
-
-  create_table "owners_tasks", force: true do |t|
-    t.integer "owner_id"
-    t.integer "task_id"
+    t.integer "user_id"
   end
 
   create_table "tasks", force: true do |t|
@@ -71,6 +57,7 @@ ActiveRecord::Schema.define(version: 20131111235354) do
     t.integer  "completed_at_time"
     t.integer  "cost"
     t.integer  "flaker_id"
+    t.integer  "due_at"
   end
 
   create_table "users", force: true do |t|

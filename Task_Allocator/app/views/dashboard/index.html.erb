@@ -26,4 +26,59 @@
 
 	</div><!-- #user-cont -->
 
+		<div id="user-data-placeholder">
+			<h1>USER DATA</h1>
+			<ul>
+				<li><%= @user.firstname %> <%= @user.lastname %></li>
+				<li><%= @user.username %></li>
+				<li><%= @user.email %></li>
+			</ul>
+			<ul>
+				<li><%= @user.phone_num %></li>
+				<li>Karma: <%= (@user.ownertasks.count + @user.creatortasks.count) - @user.flakertasks.count %></li>
+				<li>Flakes: <%= @user.flakertasks.count %></li>
+			</ul>
+		</div>
+		<div id="user-groups-data-placeholder">
+			<h1>USER GROUP DATA</h1>
+			<% @user.groups.each do |group| %>
+				<div id="<%= group.id %>" class="group-box-placeholder">
+					<ul>
+						<li><%= group.group_name %></li>
+						<li><%= group.group_desc %></li>
+						<li><%= group.homebase_location %></li>
+						<li><%= group.group_type %></li>
+					</ul>
+				</div>
+			<% end %>
+		</div>
+		<div id="user-tasks-data-placeholder">
+			<h1>USER TASK DATA</h1>
+			<div id="todo-placeholder">
+				<h1>TASKS TODO</h1>
+				<ul>
+					<% @todo_tasks.each do |todo| %>
+						<li><%= todo.name %></li>
+						<li><%= todo.priority %></li>
+						<li><%= todo.category %></li>
+						<li><%= todo.cost %></li>
+						<li><%= todo.estimated_time %></li>
+					<% end %>
+				</ul>
+			</div>
+			<div id="done-placeholder">
+				<h1>COMPLETED TASKS</h1>
+				<ul>
+					<% @completed_tasks.each do |comp| %>
+						<li><%= comp.name %></li>
+						<li><%= comp.priority %></li>
+						<li><%= comp.category %></li>
+						<li><%= comp.cost %></li>
+						<li><%= comp.estimated_time %></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+
 </div><!-- #user-wrap -->
