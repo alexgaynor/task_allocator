@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 	end
 
   has_and_belongs_to_many :groups
+  has_many :creatorgroups, class_name: "Group", foreign_key: "creator_id"
   #check to make sure that the owner/creator/flaker 
   #have been changed to owner_id/creator_id/flaker_id respectively
   has_many :ownertasks, class_name: "Task", foreign_key: "owner_id"

@@ -14,18 +14,6 @@ groups_arr = []
 users_arr = []
 tasks_arr = []
 
-3.times do
-	groups_arr << Group.create(
-		group_name: Faker::Company.name,
-		group_desc: Faker::Lorem.sentences(1).join(" "),
-		homebase_location: Faker::Address.street_address,
-		address_street: Faker::Address.street_address,
-		address_zipcode: Faker::Address.zip,
-		address_state: Faker::Address.state_abbr,
-		group_type: group_types[rand(0..4)]
-	)
-end
-
 12.times do
 	user = User.create(
 		email: Faker::Internet.email,
@@ -38,8 +26,21 @@ end
 		phone_num: Faker::PhoneNumber.phone_number,
 		prof_pic: photos[rand(0..2)]
 	)
-	user.groups << groups_arr.sample
+
 	users_arr << user
+end
+
+3.times do
+	groups_arr << Group.create(
+		group_name: Faker::Company.name,
+		group_desc: Faker::Lorem.sentences(1).join(" "),
+		homebase_location: Faker::Address.street_address,
+		address_street: Faker::Address.street_address,
+		address_zipcode: Faker::Address.zip,
+		address_state: Faker::Address.state_abbr,
+		group_type: group_types[rand(0..4)],
+		creator_id: users_arr.sample.id
+	)
 end
 
 50.times do
@@ -51,6 +52,7 @@ end
 		end_location: Faker::Address.street_address,
 		estimated_time: 123,
 		total_time: 234,
+		due_at: 4000,
 		started: boolean[rand(0..1)],
 		completed: boolean[rand(0..1)],
 		creator_id: users_arr.sample.id,
@@ -68,6 +70,13 @@ end
 	tasks_arr << task
 end
 
+
+
+
+
+users_arr.each do |user|
+	user.groups << groups_arr.sample
+end
 
 
 
