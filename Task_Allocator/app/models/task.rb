@@ -8,8 +8,8 @@ class Task < ActiveRecord::Base
 	# validates :total_time, presence: true
 	validates :started, presence: true
 	validates :completed, presence: true
-	validates :creator, presence: true
-	validates :owner, presence: true
+	validates :creator_id, presence: true
+	validates :owner_id, presence: true
 	# validates :passes, presence: true
 	validates :group_id, presence: true
 	validates :priority, presence: true

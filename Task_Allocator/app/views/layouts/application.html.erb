@@ -6,15 +6,17 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
 <body>
 
 	<header>
 		<nav>
 			<ul>
-				<a href=""><li>Contact</li></a>
-				<a href=""><li>Blog</li></a>
-				<a href=""><li>About</li></a>
+				<%= render 'devise/menu/login_items' %>
+				<a href=""><li>contact</li></a>
+				<a href=""><li>blog</li></a>
+				<a href=""><li>about</li></a>
 			</ul>
 		</nav>
 	</header>

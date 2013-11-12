@@ -3,5 +3,6 @@ TaskAllocator::Application.routes.draw do
 
   root :to => 'splash#index'
   get '/dashboard', :to => 'dashboard#index'
+  post '/users/update', :to => 'user#update'
 
 end

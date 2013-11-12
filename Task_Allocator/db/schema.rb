@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111225154) do
+ActiveRecord::Schema.define(version: 20131111235354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20131111225154) do
     t.string   "address_state"
   end
 
-  create_table "groups_users_tables", force: true do |t|
+  create_table "groups_users", force: true do |t|
     t.integer "group_id"
     t.integer "task_id"
   end
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20131111225154) do
     t.integer  "total_time"
     t.boolean  "started"
     t.boolean  "completed"
-    t.integer  "creator"
-    t.integer  "owner"
+    t.integer  "creator_id"
+    t.integer  "owner_id"
     t.integer  "passes"
     t.integer  "group_id"
     t.string   "priority"

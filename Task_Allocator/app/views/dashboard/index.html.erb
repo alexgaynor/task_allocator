@@ -1,23 +1,29 @@
-<h1>Welcome to your Task Dashboard</h1>
-
 <div id="user-wrap">
-	<div id="user-cont">
+	<div id="photo_container">
 		<% if @user.prof_pic %>
-			<img src="<%= @user.prof_pic %>" width="300" height="300" />
+			<img id="profile_pic" src="<%= @user.prof_pic %>" width="300" height="300" />
 		<% else %>
 			<div style="width:300;height:300;background:black;"></div>
 		<% end %>
-		<ul>
-			<li><%= @user.firstname %> <%= @user.lastname %></li>
-			<li><%= @user.username %></li>
-			<li><%= @user.email %></li>
-		</ul>
-		<ul>
-			<li><%= @user.phone_num %></li>
-			<li>Karma</li>
-			<li>Flakes</li>
-		</ul>
-	</div>
+	</div><!-- #photo_container -->
 
-</div>
-<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+	<div id="user-cont">
+
+		<div class="profile_info">
+			<div id="firstname"><%= @user.firstname %></div>
+			<div id="lastname"><%= @user.lastname %></div>
+			<div id="username"><%= @user.username %></div>
+			<div id="email"><%= @user.email %></div>
+			<div id="phone_num"><%= @user.phone_num %></div>
+		</div><!-- .profile_info -->
+
+		<div class="profile_info">
+			<ul>
+				<li>Karma</li>
+				<li>Flakes</li>
+			</ul>
+		</div><!-- .profile_info -->
+
+	</div><!-- #user-cont -->
+
+</div><!-- #user-wrap -->

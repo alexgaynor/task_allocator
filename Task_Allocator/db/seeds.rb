@@ -9,12 +9,16 @@ roles = ['friend', 'daughter', 'mom', 'dad', 'sister', 'brother']
 boolean = [true, false]
 priorities = ['low', 'medium', 'high']
 categories = ['chore', 'pick-up', 'grocery', 'todo']
+photos = ['http://photos2.meetupstatic.com/photos/member/a/7/c/member_10382684.jpeg', 'https://ga-core.s3.amazonaws.com/production/uploads/instructor/image/1475/li-omardelarosa.jpg', 'https://d3o09jpaxs6yh2.cloudfront.net/production/assets/people/wdi/andrew-madden-3033a86f0ab489c5c3a008d75380156e.jpg']
 
 3.times do
 	Group.create(
 		group_name: Faker::Company.name,
 		group_desc: Faker::Lorem.sentences(1).join(" "),
 		homebase_location: Faker::Address.street_address,
+		address_street: Faker::Address.street_address,
+		address_zipcode: Faker::Address.zip,
+		address_state: Faker::Address.state_abbr,
 		group_type: group_types[rand(0..4)]
 	)
 end
@@ -29,9 +33,8 @@ end
 		nickname: "nickname",
 		role: roles[rand(0..5)],
 		phone_num: Faker::PhoneNumber.phone_number,
-		prof_pic: Faker::Internet.url,
-		group_id: rand(1..3)
-		)
+		prof_pic: photos[rand(0..2)]
+	)
 end
 
 50.times do
@@ -45,8 +48,8 @@ end
 		total_time: 234,
 		started: boolean[rand(0..1)],
 		completed: boolean[rand(0..1)],
-		creator: rand(1..12),
-		owner: rand(1..12),
+		creator_id: rand(1..6),
+		owner_id: rand(7..12),
 		passes: rand(1..2),
 		group_id: rand(1..3),
 		priority: priorities[rand(0..2)],
@@ -55,8 +58,8 @@ end
 		accepted_at_time: 123456,
 		completed_at_time: 456789,
 		cost: 5,
-		flaker_id: rand(1..12)
-		)
+		flaker_id: rand(1..12),
+	)
 end
 
 
