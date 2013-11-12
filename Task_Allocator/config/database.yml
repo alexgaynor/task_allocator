@@ -19,8 +19,8 @@ development:
   encoding: unicode
   database: task_allocator_development
   pool: 5
-  username: Sunmi
-  password:
+  username: <%= ENV['PG_USERNAME'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
   host: localhost
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -49,7 +49,8 @@ test:
   encoding: unicode
   database: task_allocator_test
   pool: 5
-  username: AEG
+  username: <%= ENV['PG_USERNAME'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
   host: localhost
 
 # production:

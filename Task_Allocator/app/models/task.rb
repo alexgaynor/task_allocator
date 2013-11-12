@@ -17,12 +17,14 @@ class Task < ActiveRecord::Base
 	validates :karma_value, presence: true, numericality: { only_integer: true }
 
 
-	belongs_to :users, polymorphic: true
-	has_many :users, as: :creator
-	has_many :users, as: :owner
 
-	has_and_belongs_to_many :users
+
 	has_and_belongs_to_many :groups
+	#new db relation to user in replace of the polymorphic one above
+	belongs_to :owner, class_name: "User", foreign_key: "owner_id"
+	belongs_to :creator, class_name: "User", foreign_key: "creator_id"
+	belongs_to :flaker, class_name: "User", foreign_key: "flaker_id"
+
 
 
 end
