@@ -25,10 +25,19 @@ class GroupsController < ApplicationController
 				@tasks_in_prog << task
 			end	
 		end
-		@group = Group.new
 	end
 
 	def create
+		@group = Group.new(params[:group])
+
+		respond_to do |format|
+			if @group.save
+				format.html { redirect_to @group, notice: 'Group was successfully created.' }
+				format.json { render json: @group, status: :created }
+			else
+				format.json { render json: @group.errors, status: :unprocessable_entity }
+			end
+		end
 
 	end
 

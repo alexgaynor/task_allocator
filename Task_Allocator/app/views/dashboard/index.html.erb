@@ -41,13 +41,22 @@
 		</div>
 		<div id="user-groups-data-placeholder">
 			<h1>USER GROUP DATA</h1>
-			<h3 id="add_group">Add a Group</h3>
-			<div id="add_group_cont">
-				<%= form_for(@group, :as => group_name, :url => '/groups/create', :html => {:id => "add_group_form"}, :format => :json,:remote => true) do |f| %>
+			<h3 id="add-group">Add a Group</h3>
+			<div id="add-group-cont" style="background:navy; color:white; display:none;">
+				<%= form_for(@group, :as => resource_name, :url => '/groups', :html => {:id => "add-group-form"}, :format => :json,:remote => true) do |f| %>
 					<%= f.label "Name of group" %>
-					<%= f.name_field :group_name %>
-					<%= f.label "" %>
-
+					<%= f.text_field :group_name %>
+					<div id="add-group-form-address">
+						<%= f.label "Homebase street" %>
+						<%= f.text_field :address_street %>
+						<%= f.label "Homebase zipcode" %>
+						<%= f.text_field :address_zipcode %>
+						<%= f.label "Homebase state" %>
+						<%= f.text_field :address_state %>
+					</div>
+					<%= f.label "Type of group" %>
+					<%= f.text_field :group_type %>
+					<%= f.submit "Create Group" %>
 				<% end %>
 
 			</div>

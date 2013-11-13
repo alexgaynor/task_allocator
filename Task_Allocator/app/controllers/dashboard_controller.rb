@@ -15,7 +15,7 @@ class DashboardController < ApplicationController
 		end
 
 
-
+		@group = Group.new
 	end
 
 
