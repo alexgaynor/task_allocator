@@ -1,20 +1,21 @@
 var signInLink, signUpLink, signInForm, signUpForm;
-var $profile_info, $profile_pic, $user_container, $inputs, $user_wrap;
+var $profile_info, $profile_pic, $user_container, $inputs, $user_wrap, $user_data_container;
 var values = {};
 
 
 function profileSlideUp() {
-	$user_container.animate({ marginTop: -500 });
+	$user_container.animate({ marginTop: -1000 });
 }
 
 function profileSlideDown() {
-	$user_container.animate({ marginTop: 20, marginBottom: 100 });
+	$user_container.animate({ marginTop: 60, height: 210 });
+	$user_data_placeholder.animate({ marginTop: 40});
 }
 
 // when profile photo clicked
 function photoClick() {
 	$profile_pic.on("click", function() {
-		if ($user_container.css('marginTop') == '-500px') {
+		if ($user_container.css('marginTop') == '-1000px') {
 			profileSlideDown();
 		} else {
 			profileSlideUp();
@@ -22,40 +23,34 @@ function photoClick() {
 	});
 }
 
-// edit profile info
-function editProfileInfo() {
-	$user_wrap.on("click", function(e) {
-		console.log(e.target);
-		all = $(".profile_info div");
-		all.each(function() {
-			var dataset = $(this);
-			var theid = dataset.attr("id");
-			var newid = theid+"-form";
-			var currval = dataset.text();
-			dataset.empty();
-			// $(this).unbind('click');
-			$('<input type="text" id="'+newid+'" value="'+currval+'" class="edit_field">').appendTo(dataset);
-		});
-		keypress();
+// enter pressed after edit
+function keypress() {
+	$(":input").on("keypress", function(e) {
+		if (e.keyCode == 13) {
+			submitChanges(e);
+		} else {
+			// confirmChanges(e);
+		}
 	});
 }
 
-// keypress edit
-function keypress() {
-	$(".edit_field").on("keypress", function(e) {
-		submitChanges(e);
-	});
-}
+// function confirmChanges(e) {
+// 	console.log('confirm changes hit');
+// 	console.log(e.target);
+// 	if (!$inputs.is(e.target)) {
+// 		console.log(e);
+// 	}
+// }
 
 // submit profile edits
 function submitChanges(e) {
-	$inputs = $('.profile_info :input');
 	$inputs.each(function() {
-		var key = $(this).parent().attr('id');
+		var key = $(this).attr('id');
 		var value = $(this).val();
 		values[key] = value;
 	});
 	if(e.keyCode == 13 || e.keyCode == undefined) {
+		console.log(values);
 		editProfile(values);
 	}
 }
@@ -68,6 +63,7 @@ function editProfile(values) {
 		url: "/users/update",
 		data: {user: values}
 	}).success(function() {
+		console.log('ajaxed');
 		profileSlideUp();
 	});
 }
@@ -85,11 +81,14 @@ $(function() {
 	$profile_info = $(".profile_info");
 	$profile_pic = $("#profile_pic");
 	$user_container = $("#user-cont");
-	$inputs = $(".profile_info div :input");
+	$inputs = $(".profile_info :input");
 	$user_wrap = $("#user-wrap");
+	$user_data_placeholder = $('#user-data-placeholder');
+
 
 	photoClick();
-	editProfileInfo();
+	keypress();
+
 
 	// form transitions
 	var transition = false;
@@ -112,19 +111,17 @@ $(function() {
 	});
 
 	// confirmation box for profile changes
-	$(':input').mouseup(function(e) {
-		e.stopPropagation();
-		console.log(e.target);
-		if (!$user_wrap.is(e.target) && !$(":input").is(e.target) && $user_container.css('marginTop') == '20px') {
-			var didConfirm = confirm("Save changes?");
-			if (didConfirm == true) {
-				submitChanges(e);
-				profileSlideUp();
-			} else {
-				profileSlideUp();
-			}
-		}
-	});
+	// $("body, :input").bind("change keyup", function(e) {
+	// 	if (!$inputs.is(e.target) && $user_container.css('marginTop') == '60px') {
+	// 		var didConfirm = confirm("Save changes?");
+	// 		if (didConfirm == true) {
+	// 			submitChanges(e);
+	// 			profileSlideUp();
+	// 		} else {
+	// 			profileSlideUp();
+	// 		}
+	// 	}
+	// });
 	
 }); // end of on load
 

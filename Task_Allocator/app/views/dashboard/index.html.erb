@@ -10,13 +10,13 @@
 		</div><!-- #photo_container -->
 
 		<div id="user-cont">
-
+			<img id="photo_lg" src="<%= @user.prof_pic %>"/>
 			<div class="profile_info">
-				<div id="firstname"><%= @user.firstname %></div>
-				<div id="lastname"><%= @user.lastname %></div>
-				<div id="username"><%= @user.username %></div>
-				<div id="email"><%= @user.email %></div>
-				<div id="phone_num"><%= @user.phone_num %></div>
+				<input type="text" value="<%= @user.username %>" id="username" class="edit_field"/>
+				<input type="text" value="<%= @user.firstname %>" id="firstname" class="edit_field" />
+				<input type="text" value="<%= @user.lastname %>" id="lastname" class="edit_field" />
+				<input type="text" value="<%= @user.email %>" id="email" class="edit_field" />
+				<input type="text" value="<%= @user.phone_num %>" id="phone_num" class="edit_field" />
 			</div><!-- .profile_info -->
 
 			<div class="profile_info">
@@ -70,6 +70,8 @@
 					</div><!-- #group.id -->
 				<% end %>
 			</div>
+
+		</div><!-- #user-groups-data-placeholder -->
 
 		<div id="user-tasks-data-placeholder">
 			
