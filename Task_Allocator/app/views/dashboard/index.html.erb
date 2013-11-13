@@ -1,46 +1,39 @@
-<div id="user-wrap">
-	<div id="photo_container">
-		<% if @user.prof_pic %>
-			<img id="profile_pic" src="<%= @user.prof_pic %>" width="300" height="300" />
-		<% else %>
-			<div style="width:300;height:300;background:black;"></div>
-		<% end %>
-	</div><!-- #photo_container -->
+<div id="user_page">
 
-	<div id="user-cont">
+	<div id="user-wrap">
+		<div id="photo_container">
+			<% if @user.prof_pic %>
+				<img id="profile_pic" src="<%= @user.prof_pic %>" width="300" height="300" />
+			<% else %>
+				<div style="width:300;height:300;background:black;"></div>
+			<% end %>
+		</div><!-- #photo_container -->
 
-		<div class="profile_info">
-			<div id="firstname"><%= @user.firstname %></div>
-			<div id="lastname"><%= @user.lastname %></div>
-			<div id="username"><%= @user.username %></div>
-			<div id="email"><%= @user.email %></div>
-			<div id="phone_num"><%= @user.phone_num %></div>
-		</div><!-- .profile_info -->
+		<div id="user-cont">
 
-		<div class="profile_info">
-			<ul>
-				<li>Karma</li>
-				<li>Flakes</li>
-			</ul>
-		</div><!-- .profile_info -->
+			<div class="profile_info">
+				<div id="firstname"><%= @user.firstname %></div>
+				<div id="lastname"><%= @user.lastname %></div>
+				<div id="username"><%= @user.username %></div>
+				<div id="email"><%= @user.email %></div>
+				<div id="phone_num"><%= @user.phone_num %></div>
+			</div><!-- .profile_info -->
 
-	</div><!-- #user-cont -->
+			<div class="profile_info">
+				<ul>
+					<li>Karma: <%= (@user.ownertasks.count + @user.creatortasks.count) - @user.flakertasks.count %></li>
+					<li>Flakes: <%= @user.flakertasks.count %></li>
+				</ul>
+			</div><!-- .profile_info -->
 
-		<div id="user-data-placeholder">
-			<h1>USER DATA</h1>
-			<ul>
-				<li><%= @user.firstname %> <%= @user.lastname %></li>
-				<li><%= @user.username %></li>
-				<li><%= @user.email %></li>
-			</ul>
-			<ul>
-				<li><%= @user.phone_num %></li>
-				<li>Karma: <%= (@user.ownertasks.count + @user.creatortasks.count) - @user.flakertasks.count %></li>
-				<li>Flakes: <%= @user.flakertasks.count %></li>
-			</ul>
-		</div>
+		</div><!-- #user-cont -->
+	</div><!-- #user-wrap -->
+
+
+	<div id="user-data-placeholder">
+		
 		<div id="user-groups-data-placeholder">
-			<h1>USER GROUP DATA</h1>
+			<h2>Groups</h2>
 			<% @user.groups.each do |group| %>
 				<div id="<%= group.id %>" class="group-box-placeholder">
 					<ul>
@@ -49,36 +42,39 @@
 						<li><%= group.homebase_location %></li>
 						<li><%= group.group_type %></li>
 					</ul>
-				</div>
+				</div><!-- #group.id -->
 			<% end %>
-		</div>
+		</div><!-- #user-groups-data-placeholder -->
+
 		<div id="user-tasks-data-placeholder">
-			<h1>USER TASK DATA</h1>
+			
 			<div id="todo-placeholder">
-				<h1>TASKS TODO</h1>
+				<h1>Tasks ToDo</h1>
 				<ul>
 					<% @todo_tasks.each do |todo| %>
-						<li><%= todo.name %></li>
-						<li><%= todo.priority %></li>
-						<li><%= todo.category %></li>
-						<li><%= todo.cost %></li>
-						<li><%= todo.estimated_time %></li>
+						<li><b><%= todo.name %></b></li>
+						<li>Priority: <%= todo.priority %></li>
+						<li>Category: <%= todo.category %></li>
+						<li>Cost: $<%= todo.cost %></li>
+						<li>Estimated time: <%= todo.estimated_time %></li>
 					<% end %>
 				</ul>
-			</div>
+			</div><!-- #todo-placeholder -->
+
 			<div id="done-placeholder">
-				<h1>COMPLETED TASKS</h1>
+				<h1>Completed Tasks</h1>
 				<ul>
 					<% @completed_tasks.each do |comp| %>
-						<li><%= comp.name %></li>
-						<li><%= comp.priority %></li>
-						<li><%= comp.category %></li>
-						<li><%= comp.cost %></li>
-						<li><%= comp.estimated_time %></li>
+						<li><b><%= comp.name %></b></li>
+						<li>Priority: <%= comp.priority %></li>
+						<li>Category: <%= comp.category %></li>
+						<li>Cost: $<%= comp.cost %></li>
+						<li>Estimated time: <%= comp.estimated_time %></li>
 					<% end %>
 				</ul>
-			</div>
-		</div>
-	</div>
+			</div><!-- #done-placeholder -->
 
-</div><!-- #user-wrap -->
+		</div><!-- #user-tasks-data-placeholder -->
+	</div><!-- #user-data-placeholder -->
+
+</div>

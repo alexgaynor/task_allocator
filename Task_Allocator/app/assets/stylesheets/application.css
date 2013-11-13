@@ -29,6 +29,7 @@ header {
 	background: #F9CB8F;
 	height: 100px;
 	margin-top: -20px; 
+	z-index: -2;
 }
 
 nav ul li {
@@ -38,6 +39,5 @@ nav ul li {
 
 body {
 	margin: 0;
-	height: 100%;
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 }

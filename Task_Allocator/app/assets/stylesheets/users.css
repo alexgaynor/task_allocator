@@ -106,7 +106,7 @@
 	font-size: 18px;
 }
 
-/*************************** Dashboard ***************************/
+/*************************** Dashboard: User Profile ***************************/
 
 #user-wrap {
 	width: 600px;
@@ -134,9 +134,10 @@
 
 #user-cont {
 	width: 500px;
+	height: 130px;
 	margin: -500px auto 0;
 	position: relative;
-	z-index: -100;
+	z-index: -1;
 }
 #user-cont div {
 	border: 1px dashed rgba(00, 00, 00, 0.2);
@@ -157,5 +158,50 @@
 
 #firstname, #lastname {
 	width: 98px;
+	float: left;
+}
+
+/*************************** Dashboard: Group Info ***************************/
+
+#user_page {
+	width: 90%;
+	margin: 0 auto;
+}
+
+#user-data-placeholder {
+	clear: both;
+	margin-top: 180px;
+}
+
+#user-data-placeholder h1 {
+	text-align: center;
+}
+
+#user-groups-data-placeholder {
+	padding: 20px;
+	height: 230px;
+	background-color: rgba(00,00,00,0.1);
+}
+
+.group-box-placeholder {
+	width: 150px;
+	height: 150px;
+	float: left;
+	border: 1px dotted black;
+}
+
+#user-tasks-data-placeholder {
+	width: 100%;
+	padding: 20px;
+	clear: both;
+}
+
+#todo-placeholder {
+	width: 50%;
+	float: left;
+}
+
+#done-placeholder {
+	width: 50%;
 	float: left;
 }
