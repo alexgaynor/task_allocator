@@ -1,0 +1,74 @@
+<h1>THIS IS A GROUP INDEX PAGE</h1>
+
+<div id="basic-info-placeholder">
+	<h2><%= @group.group_name %></h2>
+	<p><%= @group.group_desc %></p>
+</div>
+
+<div id="other-info-placeholder">
+	<ul>
+		<li><%= @group.homebase_location %></li>
+		<li><%= @group.group_type %></li>
+		<li><%= @group.created_at %></li>
+		<li><%= @group.creator_id %></li>
+	</ul>
+</div>
+
+<div id="group-tasks-placeholder">
+	<div id="todo-tasks-placeholder">
+		<h1>TASKS TODO</h1>
+		<% @tasks_todo.each do |task| %>
+			<div id="task-placeholder">
+				<ul>
+					<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>
+					<li><%= task.name %></li>
+					<li><%= task.desc %></li>
+					<li><%= task.priority %></li>
+					<li><%= task.category %></li>
+					<li><%= task.karma_value %></li>
+					<li>***<%= task.owner.firstname %>***</li>
+				</ul>
+			</div>
+		<% end %>
+	</div><!-- todo-tasks-placeholder -->
+	<div id="tasks-in-progress-placeholder">
+		<h1>TASKS IN PROGRESS</h1>
+		<% @tasks_in_prog.each do |task| %>
+			<ul>
+					<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>
+				<li><%= task.name %></li>
+				<li><%= task.priority %></li>
+				<li><%= task.category %></li>
+				<li><%= task.karma_value %></li>
+				<li>***<%= task.owner.firstname %>***</li>
+			</ul>
+		<% end %>
+	</div><!-- tasks-in-progress-placeholder -->
+	<div id="completed-tasks-placeholder">
+		<h1>COMPLETED TASKS</h1>
+		<% @completed_tasks.each do |task| %>
+			<ul>
+					<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>				
+				<li><%= task.name %></li>
+				<li><%= task.priority %></li>
+				<li><%= task.category %></li>
+				<li><%= task.karma_value %></li>
+				<li>***<%= task.owner.firstname %>***</li>
+			</ul>
+		<% end %>
+	</div>
+</div><!-- group-tasks-placeholder -->
+<div id="group-members-placeholder">
+	<% @members.each do |member| %>
+	<div id="member-wrap-placeholder">
+		<img src="<%= member.prof_pic %>" width="300" height="300" />
+		<ul>
+			<li><%= member.firstname %></li>
+			<li><%= member.phone_num %></li>
+			<li><%= member.nickname %></li>
+			<li><%= member.phone_num %></li>
+		</ul>
+	</div>
+	<% end %>
+</div>
+

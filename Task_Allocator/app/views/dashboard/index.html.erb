@@ -33,10 +33,25 @@
 	<div id="user-data-placeholder">
 		
 		<div id="user-groups-data-placeholder">
+<<<<<<< HEAD
 			<h2>Groups</h2>
+=======
+			<h1>USER GROUP DATA</h1>
+			<h3 id="add_group">Add a Group</h3>
+			<div id="add_group_cont">
+				<%= form_for(@group, :as => group_name, :url => '/groups/create', :html => {:id => "add_group_form"}, :format => :json,:remote => true) do |f| %>
+					<%= f.label "Name of group" %>
+					<%= f.name_field :group_name %>
+					<%= f.label "" %>
+
+				<% end %>
+
+			</div>
+>>>>>>> bac6823687a40e6b09a031357c5db75a22908d1e
 			<% @user.groups.each do |group| %>
 				<div id="<%= group.id %>" class="group-box-placeholder">
 					<ul>
+						<li><a href="/groups/<%= group.id %>">TO GROUP LINK</a></li>
 						<li><%= group.group_name %></li>
 						<li><%= group.group_desc %></li>
 						<li><%= group.homebase_location %></li>
