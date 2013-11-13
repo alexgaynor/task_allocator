@@ -3,9 +3,9 @@
 	<div id="user-wrap">
 		<div id="photo_container">
 			<% if @user.prof_pic %>
-				<img id="profile_pic" src="<%= @user.prof_pic %>" width="300" height="300" />
+				<img id="profile_pic" src="<%= @user.prof_pic %>"/>
 			<% else %>
-				<div style="width:300;height:300;background:black;"></div>
+				<div id="profile_pic"></div>
 			<% end %>
 		</div><!-- #photo_container -->
 
@@ -33,21 +33,10 @@
 	<div id="user-data-placeholder">
 		
 		<div id="user-groups-data-placeholder">
-<<<<<<< HEAD
 			<h2>Groups</h2>
-=======
-			<h1>USER GROUP DATA</h1>
-			<h3 id="add_group">Add a Group</h3>
-			<div id="add_group_cont">
-				<%= form_for(@group, :as => group_name, :url => '/groups/create', :html => {:id => "add_group_form"}, :format => :json,:remote => true) do |f| %>
-					<%= f.label "Name of group" %>
-					<%= f.name_field :group_name %>
-					<%= f.label "" %>
 
-				<% end %>
 
-			</div>
->>>>>>> bac6823687a40e6b09a031357c5db75a22908d1e
+
 			<% @user.groups.each do |group| %>
 				<div id="<%= group.id %>" class="group-box-placeholder">
 					<ul>

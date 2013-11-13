@@ -108,14 +108,19 @@
 
 /*************************** Dashboard: User Profile ***************************/
 
+#user_page {
+	width: 90%;
+	margin: 0 auto;
+}
+
 #user-wrap {
-	width: 600px;
 	margin: -80px auto;
 	text-align: center;
 }
 
 #photo_container {
-	width: 600px;
+	width: 150px;
+	margin: 0 auto;
 }
 
 #profile_pic {
@@ -133,7 +138,7 @@
 }
 
 #user-cont {
-	width: 500px;
+	width: 800px;
 	height: 130px;
 	margin: -500px auto 0;
 	position: relative;
@@ -162,11 +167,6 @@
 }
 
 /*************************** Dashboard: Group Info ***************************/
-
-#user_page {
-	width: 90%;
-	margin: 0 auto;
-}
 
 #user-data-placeholder {
 	clear: both;
