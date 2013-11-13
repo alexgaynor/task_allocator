@@ -25,23 +25,34 @@ class GroupsController < ApplicationController
 				@tasks_in_prog << task
 			end	
 		end
+
+		@task = Task.new
 	end
 
 	def create
-		@group = Group.new(params[:group])
-
+		group = Group.create(group_params)
+		group.creator_id = current_user.id
+		group.homebase_location = "#{group.address_street} #{group.address_zipcode} #{group.address_state}"
+		group.save
+		current_user.groups << group
 		respond_to do |format|
-			if @group.save
-				format.html { redirect_to @group, notice: 'Group was successfully created.' }
-				format.json { render json: @group, status: :created }
+			if group.save
+				format.json { render json: group, status: :created }
 			else
-				format.json { render json: @group.errors, status: :unprocessable_entity }
+				format.json { render json: group.errors, status: :unprocessable_entity }
 			end
 		end
 
 	end
 
 	def update
+
+	end
+
+	private
+
+	def group_params
+		params.require(:group).permit(:group_name, :group_desc, :address_street, :address_zipcode, :address_state, :group_type)
 
 	end
 
