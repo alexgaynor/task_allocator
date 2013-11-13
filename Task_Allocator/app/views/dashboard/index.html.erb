@@ -10,13 +10,13 @@
 		</div><!-- #photo_container -->
 
 		<div id="user-cont">
-
+			<img id="photo_lg" src="<%= @user.prof_pic %>"/>
 			<div class="profile_info">
-				<div id="firstname"><%= @user.firstname %></div>
-				<div id="lastname"><%= @user.lastname %></div>
-				<div id="username"><%= @user.username %></div>
-				<div id="email"><%= @user.email %></div>
-				<div id="phone_num"><%= @user.phone_num %></div>
+				<input type="text" value="<%= @user.username %>" id="username" class="edit_field"/>
+				<input type="text" value="<%= @user.firstname %>" id="firstname" class="edit_field" />
+				<input type="text" value="<%= @user.lastname %>" id="lastname" class="edit_field" />
+				<input type="text" value="<%= @user.email %>" id="email" class="edit_field" />
+				<input type="text" value="<%= @user.phone_num %>" id="phone_num" class="edit_field" />
 			</div><!-- .profile_info -->
 
 			<div class="profile_info">
@@ -33,30 +33,7 @@
 	<div id="user-data-placeholder">
 		
 		<div id="user-groups-data-placeholder">
-<<<<<<< HEAD
 			<h2>Groups</h2>
-
-
-=======
-			<h1>USER GROUP DATA</h1>
-			<h3 id="add-group">Add a Group</h3>
-			<div id="add-group-cont" style="background:navy; color:white; display:none;">
-				<%= form_for(@group, :as => resource_name, :url => '/groups', :html => {:id => "add-group-form"}, :format => :json,:remote => true) do |f| %>
-					<%= f.label "Name of group" %>
-					<%= f.text_field :group_name %>
-					<div id="add-group-form-address">
-						<%= f.label "Homebase street" %>
-						<%= f.text_field :address_street %>
-						<%= f.label "Homebase zipcode" %>
-						<%= f.text_field :address_zipcode %>
-						<%= f.label "Homebase state" %>
-						<%= f.text_field :address_state %>
-					</div>
-					<%= f.label "Type of group" %>
-					<%= f.text_field :group_type %>
-					<%= f.submit "Create Group" %>
-				<% end %>
->>>>>>> 4f1a1978f6bc604d504ccccc00528eeaa87626e0
 
 			<% @user.groups.each do |group| %>
 				<div id="<%= group.id %>" class="group-box-placeholder">
