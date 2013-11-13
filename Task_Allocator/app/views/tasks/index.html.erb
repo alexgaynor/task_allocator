@@ -1,0 +1,26 @@
+<h1>YOU HAVE REACHED THE MOTHER FUCKING TASK PAGE</h1>
+
+<div id="basic-task-information">
+	<ul>
+		<li><%= @task.name %></li>
+		<li><%= @task.desc %></li>
+	</ul>
+</div>
+
+<div id="detailed-task-information">
+	<ul>
+		<li><%= @task.priority %></li>
+		<li><%= @task.category %></li>
+		<li><%= @task.cost %></li>
+		<li><%= @task.karma_value %></li>
+		<li><%= @task.due_at %></li>
+	</ul>
+	<ul>
+		<li>Creator: <%= @task.creator.firstname %></li>
+		<li>Owner: <%= @task.owner.firstname %></li>
+		<li><%= @task.start_location %></li>
+		<li><%= @task.destination_location %></li>
+		<li><%= @task.end_location %></li>
+		<li><%= @task.estimated_time %></li>
+	</ul>
+</div>
