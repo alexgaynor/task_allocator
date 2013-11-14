@@ -46,10 +46,23 @@
 					<ul>
 						<li><a href="/tasks/<%= task.id %>"><b><%= task.name %></b></a></li>
 						<li><%= task.desc %></li>
+<<<<<<< HEAD
 						<li>Priority: <%= task.priority %></li>
 						<li>Category: <%= task.category %></li>
 						<li>Karma Value: <%= task.karma_value %></li>
 						<li>Task Owner: <%= task.owner.firstname %></li>
+=======
+						<li><%= task.priority %></li>
+						<li><%= task.category %></li>
+						<li><%= task.karma_value %></li>
+						<li>
+							<% if task.owner %>
+								<%= task.owner.firstname %>
+							<% else %>
+								Not assigned
+							<% end %>
+						</li>
+>>>>>>> 83d67b61cefdd0ccbea03638421cb60cfc9f2e1b
 					</ul>
 				</div><!--# task-placeholder -->
 			<% end %>
@@ -59,7 +72,7 @@
 			<h1>In Progress</h1>
 			<% @tasks_in_prog.each do |task| %>
 				<ul>
-						<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>
+					<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>
 					<li><%= task.name %></li>
 					<li><%= task.priority %></li>
 					<li><%= task.category %></li>
@@ -84,7 +97,13 @@
 					<li><%= task.priority %></li>
 					<li><%= task.category %></li>
 					<li><%= task.karma_value %></li>
-					<li>***<%= task.owner.firstname %>***</li>
+					<li>
+						<% if task.owner %>
+							<%= task.owner.firstname %>
+						<% else %>
+							Not assigned
+						<% end %>
+					</li>
 				</ul>
 			<% end %>
 		</div><!-- # completed-tasks-placeholder -->
