@@ -1,50 +1,67 @@
-<h1>THIS IS A GROUP INDEX PAGE</h1>
+<div id="group_page">
 
-<div id="basic-info-placeholder">
-	<h2><%= @group.group_name %></h2>
-	<p><%= @group.group_desc %></p>
-</div>
-
-<div id="other-info-placeholder">
-	<ul>
-		<li><%= @group.homebase_location %></li>
-		<li><%= @group.group_type %></li>
-		<li><%= @group.created_at %></li>
-		<li><%= @group.creator_id %></li>
-	</ul>
-</div>
-<h3 id="add-task">Add a task</h3>
-<div id="add-task-cont">
-	<%= form_for(@task, :as => :task, :url => '/tasks', :html => {:id => 'add-task-form'}, :format => :json, :remote => true) do |f| %>
-		<%= f.label "Name of task" %>
-		<%= f.text_field :name %>
-		<%= f.label "Task's description" %>
-		<%= f.text_area :desc %>
-		<%= f.label "Task's priority" %>
-		<%= f.text_field :priority %>
-		<%= f.label "Category" %>
-		<%= f.text_field :category %>
-		<%= f.label "Due at:" %>
-		<%= f.datetime_field :due_at %>
-		<%= f.label "Assign to group member" %>
-		<%= f.select(:owner_id, options_from_collection_for_select(@members, :id, :firstname)) %>
-		<%= f.label "What type of task is this?" %>
-		<%= f.hidden_field :group_id, value: @group.id %>
-		<%= f.submit "Create Task" %>
-	<% end %>
-</div>
+	<div id="group_information">
+		<div id="group_main_info">
+			<input type="text" value="<%= @group.group_name %>" id="group_name" class="edit_field" />
+			<input type="text" value="<%= @group.group_desc %>" id="group_desc" class="edit_field" />
+		</div><!-- #group_main_info -->
 
 
+		<div id="group_details">
+			<input type="text" value="<%=  @group.homebase_location %>" id="group_homebase" class="edit_field" />
+			<input type="text" value="<%= @group.group_type %>" id="group_type" class="edit_field" />
+			<input type="text" value="<%= @group.created_at %>" id="group_created_at" class="edit_field" />
+			<input type="text" value="<%= @group.creator_id %>" id="group_creator" class="edit_field" />
+			<input value="<%= @group.id %>" class="input_type" id="id" hidden="true"/>
+		</div><!-- #group_details -->
+	</div><!-- #group_information -->
 
-<div id="group-tasks-placeholder">
-	<div id="todo-tasks-placeholder">
-		<h1>TASKS TODO</h1>
-		<% @tasks_todo.each do |task| %>
-			<div id="task-placeholder">
+	<div id="add_task_container">
+		<h3>Add a task</h3>
+		<%= form_for(@task, :as => :task, :url => '/tasks', :html => {:id => 'add-task-form'}, :format => :json, :remote => true) do |f| %>
+			<%= f.label "Name of task" %>
+			<%= f.text_field :name %>
+			<%= f.label "Task's description" %>
+			<%= f.text_area :desc %>
+			<%= f.label "Task's priority" %>
+			<%= f.text_field :priority %>
+			<%= f.label "Category" %>
+			<%= f.text_field :category %>
+			<%= f.label "Due at:" %>
+			<%= f.datetime_field :due_at %>
+			<%= f.label "Assign to who" %>
+			<%= f.select(:owner_id, options_from_collection_for_select(@members, :id, :firstname)) %>
+			<%= f.select(:category, options_from_collection_for_select()) %>
+			<%= f.hidden_field :group_id, value: @group.id %>
+			<%= f.submit "Create Task" %>
+		<% end %>
+	</div><!-- #add_task_container -->
+
+	<div id="group-tasks-placeholder">
+
+		<div id="todo-tasks-placeholder">
+			<h1>TASKS TODO</h1>
+			<% @tasks_todo.each do |task| %>
+				<div id="task-placeholder">
+					<ul>
+						<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>
+						<li><%= task.name %></li>
+						<li><%= task.desc %></li>
+						<li><%= task.priority %></li>
+						<li><%= task.category %></li>
+						<li><%= task.karma_value %></li>
+						<li>***<%= task.owner.firstname %>***</li>
+					</ul>
+				</div><!--# task-placeholder -->
+			<% end %>
+		</div><!-- todo-tasks-placeholder -->
+
+		<div id="tasks-in-progress-placeholder">
+			<h1>TASKS IN PROGRESS</h1>
+			<% @tasks_in_prog.each do |task| %>
 				<ul>
-					<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>
+						<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>
 					<li><%= task.name %></li>
-					<li><%= task.desc %></li>
 					<li><%= task.priority %></li>
 					<li><%= task.category %></li>
 					<li><%= task.karma_value %></li>
@@ -56,6 +73,7 @@
 						<% end %>
 					</li>
 				</ul>
+<<<<<<< HEAD
 			</div>
 		<% end %>
 	</div><!-- todo-tasks-placeholder -->
@@ -83,20 +101,68 @@
 				<li><%= task.karma_value %></li>
 				<li>***<%= task.owner.firstname %>***</li>
 			</ul>
-		<% end %>
-	</div>
-</div><!-- group-tasks-placeholder -->
-<div id="group-members-placeholder">
-	<% @members.each do |member| %>
-	<div id="member-wrap-placeholder">
-		<img src="<%= member.prof_pic %>" width="300" height="300" />
-		<ul>
-			<li><%= member.firstname %></li>
-			<li><%= member.phone_num %></li>
-			<li><%= member.nickname %></li>
-			<li><%= member.phone_num %></li>
-		</ul>
-	</div>
-	<% end %>
-</div>
+=======
+			<% end %>
+		</div><!-- tasks-in-progress-placeholder -->
 
+		<div id="completed-tasks-placeholder">
+			<h1>COMPLETED TASKS</h1>
+			<% @completed_tasks.each do |task| %>
+				<ul>
+					<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>				
+					<li><%= task.name %></li>
+					<li><%= task.priority %></li>
+					<li><%= task.category %></li>
+					<li><%= task.karma_value %></li>
+					<li>***<%= task.owner.firstname %>***</li>
+				</ul>
+			<% end %>
+		</div><!-- # completed-tasks-placeholder -->
+
+	</div><!-- group-tasks-placeholder -->
+
+	<div id="group-members-placeholder">
+		<h1>Group Members</h1>
+		<% if @is_creator %>
+			<input type="button" value="add member" id="add_member_button"/>
+>>>>>>> 0003ed809182d891d5de80256bd8e981e508f1f0
+		<% end %>
+
+		<div id="add_member_container">
+			<%= form_for(@member, :as => :new_members, :url => "/groups/add_member", :html => {:id => "add_member_form"}, :format => :json, :remote => true) do |f| %>
+				<%= f.text_field :email %>
+				<%= f.hidden_field :group_id, value: @group.id %>
+				<%= f.submit "invite" %>
+			<% end %>
+		</div><!-- #add_member_container -->
+
+		<div id="member-wrap-placeholder">
+			<% @members.each do |member| %>
+				<div class="group_member_box">
+					<img src="<%= member.prof_pic %>" width="300" height="300" />
+					<ul>
+						<li><%= member.firstname %> <%= member.lastname %></li>
+						<li><%= member.nickname %></li>
+						<li><%= member.username %></li>
+						<li><%= member.phone_num %></li>
+					</ul>
+				</div><!-- .group_member_box -->
+			<% end %>
+		</div><!-- #member-wrap-placeholder -->
+	</div><!-- #group-members-placeholder -->
+</div><!-- #group_page -->
+
+
+<script src="javascripts/group.js"></script>
+
+<script id="group_members_template" type="text/x-handlebars-template">
+	<div class="group_member_box">
+		<img src="{{prof_pic}}" />
+		<ul>
+				<li>{{firstname}} {{lastname}}</li>
+				<li>{{nickname}}</li>
+				<li>{{usernme}}</li>
+				<li>{{phone_num}}</li>
+			</ul>
+	</div>
+</script>

@@ -4,13 +4,16 @@ class GroupsController < ApplicationController
 
 	def index
 		@user = current_user
-
 		id = params[:id]
 		@group = Group.find(id)
-
 		@members = @group.users
 		@task_categories = ['chore', 'pick-up', 'grocery', 'todo']
 
+		@member = User.new
+
+		if @user.id == @group.creator_id
+			@is_creator = true
+		end
 
 		@tasks_todo = []
 		@completed_tasks = []
@@ -50,11 +53,32 @@ class GroupsController < ApplicationController
 
 	end
 
+	def add_member
+		id = members_params['group_id']
+		@group = Group.find(id)
+		members = @group.users
+
+		email = members_params['email']
+		
+		if user = User.find_by_email(email)
+			group = Group.find(id)
+			user.groups << group
+
+			render :json => user
+
+		else
+			# send out email to join
+		end
+	end
+
 	private
 
 	def group_params
 		params.require(:group).permit(:group_name, :group_desc, :address_street, :address_zipcode, :address_state, :group_type)
+	end
 
+	def members_params
+		params.require(:new_members).permit(:email, :group_id)
 	end
 
 end
