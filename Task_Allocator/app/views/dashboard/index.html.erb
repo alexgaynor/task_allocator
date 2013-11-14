@@ -80,6 +80,7 @@
 				<ul>
 					<% @todo_tasks.each do |todo| %>
 						<li><b><%= todo.name %></b></li>
+						<li><%= todo.group_id %></li>
 						<li>Priority: <%= todo.priority %></li>
 						<li>Category: <%= todo.category %></li>
 						<li>Cost: $<%= todo.cost %></li>

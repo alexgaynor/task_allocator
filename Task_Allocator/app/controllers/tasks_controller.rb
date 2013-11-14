@@ -13,10 +13,13 @@ class TasksController < ApplicationController
 	end
 
 	def create
-		task = Task.create(task_params)
-
+		if task = Task.create(task_params)
+			render json: {task: task.to_json, creator: task.creator.to_json}
+		else
+			render json: task.errors, status: :unprocessable_entity 
+		end
+		
 	end
-
 
 
 	private

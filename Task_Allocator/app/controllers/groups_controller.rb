@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
 		@tasks_todo = []
 		@completed_tasks = []
 		@tasks_in_prog = []
-		@tasks = Task.where(group_id: id)
+		@tasks = Task.where(group_id: id).order(:created_at)
 
 		@tasks.each do |task|
 			if !task.started
@@ -26,7 +26,7 @@ class GroupsController < ApplicationController
 				@completed_tasks << task
 			elsif task.started && !task.completed
 				@tasks_in_prog << task
-			end	
+			end
 		end
 
 		@task = Task.new

@@ -9,7 +9,7 @@ $(function () {
 		addGroupCont.fadeIn(300);
 	});
 
-	addGroupForm.on('submit', function (event) {
+	addGroupForm.on('submit', function () {
 		addGroupCont.fadeOut(300);
 	});
 
