@@ -31,7 +31,7 @@
 			<%= f.datetime_field :due_at %>
 			<%= f.label "Assign to who" %>
 			<%= f.select(:owner_id, options_from_collection_for_select(@members, :id, :firstname)) %>
-			<%= f.select(:category, options_from_collection_for_select()) %>
+			<%= f.select :category, [['Chore', 'chore'],['Pick-up', 'pick-up'],['Grocery', 'grocery'],['Todo', 'todo']] %>
 			<%= f.hidden_field :group_id, value: @group.id %>
 			<%= f.submit "Create Task" %>
 		<% end %>
@@ -73,7 +73,8 @@
 						<% end %>
 					</li>
 				</ul>
-			</div><!-- #tasks-in-progress-placeholder -->
+			<% end %>
+		</div><!-- #tasks-in-progress-placeholder -->
 
 		<div id="completed-tasks-placeholder">
 			<h1>COMPLETED TASKS</h1>

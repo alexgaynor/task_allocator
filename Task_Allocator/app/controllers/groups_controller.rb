@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
 		id = params[:id]
 		@group = Group.find(id)
 		@members = @group.users
-		@task_categories = ['chore', 'pick-up', 'grocery', 'todo']
+		# @task_categories = [['Chore', 'chore'],['Pick-up', 'pick-up'],['Grocery', 'grocery'],['Todo', 'todo']]
 
 		@member = User.new
 
