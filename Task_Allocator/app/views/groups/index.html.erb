@@ -7,11 +7,11 @@
 		</div><!-- #group_main_info -->
 
 		<div id="group_details">
-			<input type="text" value="<%=  @group.homebase_location %>" id="group_homebase" class="edit_field" />
+			<input type="text" value="<%= @group.address_street %>" id="address_street" class="edit_field" />
+			<input type="text" value="<%= @group.address_zipcode %>" id="address_zipcode" class="edit_field" />
+			<input type="text" value="<%= @group.address_state %>" id="address_state" class="edit_field" />
 			<input type="text" value="<%= @group.group_type %>" id="group_type" class="edit_field" />
-			<input type="text" value="<%= @group.created_at %>" id="group_created_at" class="edit_field" />
-			<input type="text" value="<%= @group.creator_id %>" id="group_creator" class="edit_field" />
-			<input value="<%= @group.id %>" class="input_type" id="id" hidden="true"/>
+			<input value="<%= @group.id %>" id="id" hidden="true"/>
 		</div><!-- #group_details -->
 	</div><!-- #group_information -->
 
@@ -94,21 +94,21 @@
 	<div id="group-members-placeholder">
 		<h1>Group Members</h1>
 		<% if @is_creator %>
-			<input type="button" value="add member" id="add_member_button"/>
-		<% end %>
-
-		<div id="add_member_container">
-			<%= form_for(@member, :as => :new_members, :url => "/groups/add_member", :html => {:id => "add_member_form"}, :format => :json, :remote => true) do |f| %>
+			<div id="add_member_container">
+			<%= form_for(@member, :as => :new_members, :method => 'post', :url => "/groups/add_member", :html => {:id => "add_member_form"}, :format => :json, :remote => true) do |f| %>
 				<%= f.text_field :email %>
 				<%= f.hidden_field :group_id, value: @group.id %>
 				<%= f.submit "invite" %>
 			<% end %>
 		</div><!-- #add_member_container -->
+		<% end %>
+
+		
 
 		<div id="member-wrap-placeholder">
 			<% @members.each do |member| %>
 				<div class="group_member_box">
-					<img src="<%= member.prof_pic %>" width="300" height="300" />
+					<img class="member_photo" src="<%= member.prof_pic %>" />
 					<ul>
 						<li><%= member.firstname %> <%= member.lastname %></li>
 						<li><%= member.nickname %></li>
@@ -122,11 +122,11 @@
 </div><!-- #group_page -->
 
 
-<script src="javascripts/group.js"></script>
+<script type="text/javascript" src="/assets/group.js"></script>
 
 <script id="group_members_template" type="text/x-handlebars-template">
 	<div class="group_member_box">
-		<img src="{{prof_pic}}" />
+		<img class="member_photo" src="{{prof_pic}}" />
 		<ul>
 				<li>{{firstname}} {{lastname}}</li>
 				<li>{{nickname}}</li>

@@ -49,6 +49,13 @@ class GroupsController < ApplicationController
 	end
 
 	def update
+		id = group_edit_params['id']
+		group = Group.find(id)
+		group.update_attributes!(group_edit_params)
+		group.homebase_location = "#{group.address_street} #{group.address_zipcode} #{group.address_state}"
+		group.save
+
+		render :json => group
 
 	end
 
@@ -58,7 +65,7 @@ class GroupsController < ApplicationController
 		members = @group.users
 
 		email = members_params['email']
-		
+		binding.pry
 		if user = User.find_by_email(email)
 			group = Group.find(id)
 			user.groups << group
@@ -74,6 +81,10 @@ class GroupsController < ApplicationController
 
 	def group_params
 		params.require(:group).permit(:group_name, :group_desc, :address_street, :address_zipcode, :address_state, :group_type)
+	end
+
+	def group_edit_params
+		params.require(:group).permit(:id, :group_name, :group_desc, :address_street, :address_zipcode, :address_state, :group_type)
 	end
 
 	def members_params

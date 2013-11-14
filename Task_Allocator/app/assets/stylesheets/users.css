@@ -233,3 +233,25 @@
 	width: 20%;
 	background-color: green;
 }
+
+.member_photo {
+	width: 250px;
+	height: 250px;
+}
+
+/*************************** Task: Task Info ***************************/
+
+#task_page {
+	width: 90%;
+	margin: 0 auto;
+}
+
+#task_main_info {
+	width: 40%;
+	background-color: pink;
+}
+
+#task_details {
+	width: 40%;
+	background-color: green;
+}
