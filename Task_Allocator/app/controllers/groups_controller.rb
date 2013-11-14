@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
 		@group = Group.find(id)
 
 		@members = @group.users
+		@task_categories = ['chore', 'pick-up', 'grocery', 'todo']
 
 
 		@tasks_todo = []

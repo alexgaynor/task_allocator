@@ -26,9 +26,9 @@
 		<%= f.text_field :category %>
 		<%= f.label "Due at:" %>
 		<%= f.datetime_field :due_at %>
-		<%= f.label "Assign to who" %>
+		<%= f.label "Assign to group member" %>
 		<%= f.select(:owner_id, options_from_collection_for_select(@members, :id, :firstname)) %>
-
+		<%= f.label "What type of task is this?" %>
 		<%= f.hidden_field :group_id, value: @group.id %>
 		<%= f.submit "Create Task" %>
 	<% end %>
@@ -76,7 +76,7 @@
 		<h1>COMPLETED TASKS</h1>
 		<% @completed_tasks.each do |task| %>
 			<ul>
-					<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>				
+				<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>				
 				<li><%= task.name %></li>
 				<li><%= task.priority %></li>
 				<li><%= task.category %></li>

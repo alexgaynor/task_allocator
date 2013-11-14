@@ -38,6 +38,8 @@ gem 'simplecov', :require => false, :group => :test
 
 gem 'faker'
 
+gem "actionmailer"
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
