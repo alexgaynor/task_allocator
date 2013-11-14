@@ -31,7 +31,7 @@
 			<%= f.datetime_field :due_at %>
 			<%= f.label "Assign to who" %>
 			<%= f.select(:owner_id, options_from_collection_for_select(@members, :id, :firstname)) %>
-			<%= f.select(:category, options_from_collection_for_select()) %>
+			<%= f.select :category, [['Chore', 'chore'],['Pick-up', 'pick-up'],['Grocery', 'grocery'],['Todo', 'todo']] %>
 			<%= f.hidden_field :group_id, value: @group.id %>
 			<%= f.submit "Create Task" %>
 		<% end %>
@@ -50,7 +50,13 @@
 						<li><%= task.priority %></li>
 						<li><%= task.category %></li>
 						<li><%= task.karma_value %></li>
-						<li>***<%= task.owner.firstname %>***</li>
+						<li>
+							<% if task.owner %>
+								<%= task.owner.firstname %>
+							<% else %>
+								Not assigned
+							<% end %>
+						</li>
 					</ul>
 				</div><!--# task-placeholder -->
 			<% end %>
@@ -60,7 +66,7 @@
 			<h1>TASKS IN PROGRESS</h1>
 			<% @tasks_in_prog.each do |task| %>
 				<ul>
-						<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>
+					<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>
 					<li><%= task.name %></li>
 					<li><%= task.priority %></li>
 					<li><%= task.category %></li>
@@ -73,35 +79,6 @@
 						<% end %>
 					</li>
 				</ul>
-<<<<<<< HEAD
-			</div>
-		<% end %>
-	</div><!-- todo-tasks-placeholder -->
-	<div id="tasks-in-progress-placeholder">
-		<h1>TASKS IN PROGRESS</h1>
-		<% @tasks_in_prog.each do |task| %>
-			<ul>
-					<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>
-				<li><%= task.name %></li>
-				<li><%= task.priority %></li>
-				<li><%= task.category %></li>
-				<li><%= task.karma_value %></li>
-				<li>***<%= task.owner.firstname %>***</li>
-			</ul>
-		<% end %>
-	</div><!-- tasks-in-progress-placeholder -->
-	<div id="completed-tasks-placeholder">
-		<h1>COMPLETED TASKS</h1>
-		<% @completed_tasks.each do |task| %>
-			<ul>
-				<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>				
-				<li><%= task.name %></li>
-				<li><%= task.priority %></li>
-				<li><%= task.category %></li>
-				<li><%= task.karma_value %></li>
-				<li>***<%= task.owner.firstname %>***</li>
-			</ul>
-=======
 			<% end %>
 		</div><!-- tasks-in-progress-placeholder -->
 
@@ -114,7 +91,13 @@
 					<li><%= task.priority %></li>
 					<li><%= task.category %></li>
 					<li><%= task.karma_value %></li>
-					<li>***<%= task.owner.firstname %>***</li>
+					<li>
+						<% if task.owner %>
+							<%= task.owner.firstname %>
+						<% else %>
+							Not assigned
+						<% end %>
+					</li>
 				</ul>
 			<% end %>
 		</div><!-- # completed-tasks-placeholder -->
@@ -124,8 +107,7 @@
 	<div id="group-members-placeholder">
 		<h1>Group Members</h1>
 		<% if @is_creator %>
-			<input type="button" value="add member" id="add_member_button"/>
->>>>>>> 0003ed809182d891d5de80256bd8e981e508f1f0
+			<!-- <input type="button" value="add member" id="add_member_button"/> -->
 		<% end %>
 
 		<div id="add_member_container">
@@ -153,7 +135,7 @@
 </div><!-- #group_page -->
 
 
-<script src="javascripts/group.js"></script>
+<script type="text/javascript" src="/assets/group.js"></script>
 
 <script id="group_members_template" type="text/x-handlebars-template">
 	<div class="group_member_box">

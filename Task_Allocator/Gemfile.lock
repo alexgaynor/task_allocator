@@ -147,6 +147,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 1.2)
   jquery-rails
+  mail
   pg
   pry
   rails (= 4.0.0)

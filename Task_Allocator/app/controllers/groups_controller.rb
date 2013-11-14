@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
 
-	before_filter :authenticate_user!
+	before_filter :authenticate_user!, except: [:invite]
 
 	def index
 		@user = current_user
@@ -63,13 +63,23 @@ class GroupsController < ApplicationController
 		if user = User.find_by_email(email)
 			group = Group.find(id)
 			user.groups << group
-
 			render :json => user
-
 		else
 			# send out email to join
+			InviteMailer.group_invite(email, @group).deliver
+			render :json => user
 		end
 	end
+
+	def invite
+		group_id = params[:g]
+		session[:group_id] = group_id
+		redirect_to new_user_registration_path
+
+		# on setting of session variable group_id encode 64 
+		# make sure to decode on the other end
+	end
+
 
 	private
 

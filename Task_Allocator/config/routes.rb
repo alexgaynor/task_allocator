@@ -1,10 +1,12 @@
 TaskAllocator::Application.routes.draw do
-  devise_for :users
+  get '/invite', :to => 'groups#invite'
+  devise_for :users, :controllers => { registrations: 'registrations' }
   #root to splash page
   root :to => 'splash#index'
   #dashboard roots
   get '/dashboard', :to => 'dashboard#index'
   post '/users/update', :to => 'user#update'
+
 
   #group roots
   get '/groups/:id', :to => 'groups#index'
