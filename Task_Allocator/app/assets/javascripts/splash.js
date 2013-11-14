@@ -57,10 +57,12 @@ function submitChanges(e) {
 
 // ajax update user attributes
 function editProfile(values) {
+
+ var url = "/users/update"
 	$.ajax({
 		dataType: "json",
 		method: "post",
-		url: "/users/update",
+		url: url,
 		data: {user: values}
 	}).success(function() {
 		console.log('ajaxed');
@@ -81,11 +83,13 @@ $(function() {
 	$profile_info = $(".profile_info");
 	$profile_pic = $("#profile_pic");
 	$user_container = $("#user-cont");
-	$inputs = $(".profile_info :input");
+	$inputs = $(":input");
 	$user_wrap = $("#user-wrap");
 	$user_data_placeholder = $('#user-data-placeholder');
 
+	$group_info = $("#group_information");
 
+	// user profile
 	photoClick();
 	keypress();
 

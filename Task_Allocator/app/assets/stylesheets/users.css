@@ -176,7 +176,7 @@
 	clear: both;
 }
 
-/*************************** Dashboard: Group Info ***************************/
+/*************************** Dashboard: Groups Info ***************************/
 
 #user-data-placeholder {
 	clear: both;
@@ -215,4 +215,21 @@
 #done-placeholder {
 	width: 50%;
 	float: left;
+}
+
+/*************************** Group: Group Info ***************************/
+
+#group_page {
+	width: 90%;
+	margin: 0 auto;
+}
+
+#group_main_info {
+	width: 20%;
+	background-color: pink;
+}
+
+#group_details {
+	width: 20%;
+	background-color: green;
 }

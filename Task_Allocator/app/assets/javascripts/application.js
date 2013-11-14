@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require handlebars
+//= require splash.js
+//= require user.js
+//= require dashboard.js
+//= require jquery_easing.js
