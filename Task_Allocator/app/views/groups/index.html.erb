@@ -13,20 +13,23 @@
 		<li><%= @group.creator_id %></li>
 	</ul>
 </div>
-
+<h3 id="add-task">Add a task</h3>
 <div id="add-task-cont">
-	<h3>Add a task</h3>
 	<%= form_for(@task, :as => :task, :url => '/tasks', :html => {:id => 'add-task-form'}, :format => :json, :remote => true) do |f| %>
 		<%= f.label "Name of task" %>
 		<%= f.text_field :name %>
 		<%= f.label "Task's description" %>
-		<%= f.text_field :desc %>
+		<%= f.text_area :desc %>
 		<%= f.label "Task's priority" %>
 		<%= f.text_field :priority %>
 		<%= f.label "Category" %>
 		<%= f.text_field :category %>
-		<%= f.label "Completed by" %>
-		<%= f.text_field :due_at %>
+		<%= f.label "Due at:" %>
+		<%= f.datetime_field :due_at %>
+		<%= f.label "Assign to who" %>
+		<%= f.select(:owner_id, options_from_collection_for_select(@members, :id, :firstname)) %>
+
+		<%= f.hidden_field :group_id, value: @group.id %>
 		<%= f.submit "Create Task" %>
 	<% end %>
 </div>
@@ -45,7 +48,13 @@
 					<li><%= task.priority %></li>
 					<li><%= task.category %></li>
 					<li><%= task.karma_value %></li>
-					<li>***<%= task.owner.firstname %>***</li>
+					<li>
+						<% if task.owner %>
+							<%= task.owner.firstname %>
+						<% else %>
+							Not assigned
+						<% end %>
+					</li>
 				</ul>
 			</div>
 		<% end %>
