@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
 		id = params[:id]
 		@group = Group.find(id)
 		@members = @group.users
+		@task_categories = ['chore', 'pick-up', 'grocery', 'todo']
 
 		@member = User.new
 

@@ -38,6 +38,8 @@ gem 'simplecov', :require => false, :group => :test
 
 gem 'faker'
 
+gem "actionmailer"
+
 gem 'pry'
 
 # Use ActiveModel has_secure_password

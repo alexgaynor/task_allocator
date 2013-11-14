@@ -6,6 +6,7 @@
 			<input type="text" value="<%= @group.group_desc %>" id="group_desc" class="edit_field" />
 		</div><!-- #group_main_info -->
 
+
 		<div id="group_details">
 			<input type="text" value="<%= @group.address_street %>" id="address_street" class="edit_field" />
 			<input type="text" value="<%= @group.address_zipcode %>" id="address_zipcode" class="edit_field" />
@@ -30,7 +31,7 @@
 			<%= f.datetime_field :due_at %>
 			<%= f.label "Assign to who" %>
 			<%= f.select(:owner_id, options_from_collection_for_select(@members, :id, :firstname)) %>
-
+			<%= f.select(:category, options_from_collection_for_select()) %>
 			<%= f.hidden_field :group_id, value: @group.id %>
 			<%= f.submit "Create Task" %>
 		<% end %>
@@ -72,8 +73,7 @@
 						<% end %>
 					</li>
 				</ul>
-			<% end %>
-		</div><!-- tasks-in-progress-placeholder -->
+			</div><!-- #tasks-in-progress-placeholder -->
 
 		<div id="completed-tasks-placeholder">
 			<h1>COMPLETED TASKS</h1>
@@ -102,8 +102,6 @@
 			<% end %>
 		</div><!-- #add_member_container -->
 		<% end %>
-
-		
 
 		<div id="member-wrap-placeholder">
 			<% @members.each do |member| %>

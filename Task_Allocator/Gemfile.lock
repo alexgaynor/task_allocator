@@ -142,6 +142,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionmailer
   devise (= 3.0.0.rc)
   faker
   jbuilder (~> 1.2)
