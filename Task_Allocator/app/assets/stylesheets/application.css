@@ -26,7 +26,7 @@ li, ul {
 }
 
 header {
-	background: #F9CB8F;
+	background: #94E1D5;
 	height: 100px;
 	margin-top: -20px; 
 	z-index: 10;
@@ -40,4 +40,19 @@ nav ul li {
 body {
 	margin: 0;
 	font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+
+#sign-in-link, #sign-up-link {
+	cursor: pointer;
+}
+
+#links {
+	width: 200px;
+	margin: 0 auto;
+}
+
+.editable_view {
+	color: #B0B0AA;
+	text-shadow: 1px 1px 1px #6E6E6A;
 }

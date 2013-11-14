@@ -4,32 +4,32 @@
 		<div id="group_main_info">
 			<input type="text" value="<%= @group.group_name %>" id="group_name" class="edit_field" />
 			<input type="text" value="<%= @group.group_desc %>" id="group_desc" class="edit_field" />
+			<input type="text" value="<%= @group.group_type %>" id="group_type" class="edit_field" />
 		</div><!-- #group_main_info -->
 
 
 		<div id="group_details">
 			<input type="text" value="<%= @group.address_street %>" id="address_street" class="edit_field" />
-			<input type="text" value="<%= @group.address_zipcode %>" id="address_zipcode" class="edit_field" />
 			<input type="text" value="<%= @group.address_state %>" id="address_state" class="edit_field" />
-			<input type="text" value="<%= @group.group_type %>" id="group_type" class="edit_field" />
+			<input type="text" value="<%= @group.address_zipcode %>" id="address_zipcode" class="edit_field" />
+			
 			<input value="<%= @group.id %>" id="id" hidden="true"/>
 		</div><!-- #group_details -->
 	</div><!-- #group_information -->
 
 	<div id="add_task_container">
-		<h3>Add a task</h3>
 		<%= form_for(@task, :as => :task, :url => '/tasks', :html => {:id => 'add-task-form'}, :format => :json, :remote => true) do |f| %>
-			<%= f.label "Name of task" %>
+			<%= f.label "Task" %>
 			<%= f.text_field :name %>
-			<%= f.label "Task's description" %>
+			<%= f.label "Description" %>
 			<%= f.text_area :desc %>
-			<%= f.label "Task's priority" %>
+			<%= f.label "Priority" %>
 			<%= f.text_field :priority %>
 			<%= f.label "Category" %>
 			<%= f.text_field :category %>
-			<%= f.label "Due at:" %>
+			<%= f.label "Due:" %>
 			<%= f.datetime_field :due_at %>
-			<%= f.label "Assign to who" %>
+			<%= f.label "Assign to:" %>
 			<%= f.select(:owner_id, options_from_collection_for_select(@members, :id, :firstname)) %>
 			<%= f.select :category, [['Chore', 'chore'],['Pick-up', 'pick-up'],['Grocery', 'grocery'],['Todo', 'todo']] %>
 			<%= f.hidden_field :group_id, value: @group.id %>
@@ -39,25 +39,24 @@
 
 	<div id="group-tasks-placeholder">
 
-		<div id="todo-tasks-placeholder">
-			<h1>TASKS TODO</h1>
+		<div id="todo-tasks-placeholder" class="group_tasks">
+			<h1>Tasks ToDo</h1>
 			<% @tasks_todo.each do |task| %>
 				<div id="task-placeholder">
 					<ul>
-						<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>
-						<li><%= task.name %></li>
+						<li><a href="/tasks/<%= task.id %>"><b><%= task.name %></b></a></li>
 						<li><%= task.desc %></li>
-						<li><%= task.priority %></li>
-						<li><%= task.category %></li>
-						<li><%= task.karma_value %></li>
-						<li>***<%= task.owner.firstname %>***</li>
+						<li>Priority: <%= task.priority %></li>
+						<li>Category: <%= task.category %></li>
+						<li>Karma Value: <%= task.karma_value %></li>
+						<li>Task Owner: <%= task.owner.firstname %></li>
 					</ul>
 				</div><!--# task-placeholder -->
 			<% end %>
 		</div><!-- todo-tasks-placeholder -->
 
-		<div id="tasks-in-progress-placeholder">
-			<h1>TASKS IN PROGRESS</h1>
+		<div id="tasks-in-progress-placeholder" class="group_tasks">
+			<h1>In Progress</h1>
 			<% @tasks_in_prog.each do |task| %>
 				<ul>
 						<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>
@@ -76,8 +75,8 @@
 			<% end %>
 		</div><!-- #tasks-in-progress-placeholder -->
 
-		<div id="completed-tasks-placeholder">
-			<h1>COMPLETED TASKS</h1>
+		<div id="completed-tasks-placeholder" class="group_tasks">
+			<h1>Completed Tasks</h1>
 			<% @completed_tasks.each do |task| %>
 				<ul>
 					<li><a href="/tasks/<%= task.id %>">LINK TO TASK</a></li>				
@@ -93,7 +92,6 @@
 	</div><!-- group-tasks-placeholder -->
 
 	<div id="group-members-placeholder">
-		<h1>Group Members</h1>
 		<% if @is_creator %>
 			<div id="add_member_container">
 			<%= form_for(@member, :as => :new_members, :method => 'post', :url => "/groups/add_member", :html => {:id => "add_member_form"}, :format => :json, :remote => true) do |f| %>

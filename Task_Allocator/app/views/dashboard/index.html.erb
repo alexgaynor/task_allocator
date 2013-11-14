@@ -33,26 +33,22 @@
 	<div id="user-data-placeholder">
 		
 		<div id="user-groups-data-placeholder">
-
-			<h2>Groups</h2>
-
-			<h1>USER GROUP DATA</h1>
-			<h3 id="add-group">Add a Group</h3>
-			<div id="add-group-cont" style="background:navy; color:white; display:none;">
+			<h2 id="add-group">Groups</h2><i id="add-icon" class="fa fa-plus-square-o"></i> 
+			<div id="add-group-cont">
 				<%= form_for(@group, :as => :group, :url => '/groups', :html => {:id => "add-group-form"}, :format => :json,:remote => true) do |f| %>
-					<%= f.label "Name of group" %>
+					<%= f.label "Group name" %>
 					<%= f.text_field :group_name %>
 					<%= f.label "Description" %>
 					<%= f.text_field :group_desc %>
 					<div id="add-group-form-address">
-						<%= f.label "Homebase street" %>
+						<%= f.label "Street" %>
 						<%= f.text_field :address_street %>
-						<%= f.label "Homebase zipcode" %>
-						<%= f.text_field :address_zipcode %>
-						<%= f.label "Homebase state" %>
+						<%= f.label "State" %>
 						<%= f.text_field :address_state %>
+						<%= f.label "Zipcode" %>
+						<%= f.text_field :address_zipcode %>
 					</div>
-					<%= f.label "Type of group" %>
+					<%= f.label "Group type" %>
 					<%= f.text_field :group_type %>
 					<%= f.submit "Create Group" %>
 				<% end %>
@@ -60,13 +56,11 @@
 			<div id="groups-cont">
 				<% @user.groups.each do |group| %>
 					<div id="<%= group.id %>" class="group-box-placeholder" style="color:black;">
-						<ul>
-							<li><a href="/groups/<%= group.id %>">TO GROUP LINK</a></li>
-							<li><%= group.group_name %></li>
-							<li><%= group.group_desc %></li>
-							<li><%= group.homebase_location %></li>
-							<li><%= group.group_type %></li>
-						</ul>
+						<a href="/groups/<%= group.id %>">
+							<p><b><%= group.group_name %></b></p>
+							<p><%= group.group_desc %></p>
+			
+						</a>
 					</div><!-- #group.id -->
 				<% end %>
 			</div>
@@ -80,11 +74,10 @@
 				<ul>
 					<% @todo_tasks.each do |todo| %>
 						<li><b><%= todo.name %></b></li>
-						<li><%= todo.group_id %></li>
-						<li>Priority: <%= todo.priority %></li>
 						<li>Category: <%= todo.category %></li>
-						<li>Cost: $<%= todo.cost %></li>
+						<li>Priority: <%= todo.priority %></li>
 						<li>Estimated time: <%= todo.estimated_time %></li>
+						<li>Cost: $<%= todo.cost %></li>
 					<% end %>
 				</ul>
 			</div><!-- #todo-placeholder -->

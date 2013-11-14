@@ -1,5 +1,5 @@
 var signInLink, signUpLink, signInForm, signUpForm;
-var $profile_info, $profile_pic, $user_container, $inputs, $user_wrap, $user_data_container;
+var $profile_info, $profile_pic, $user_container, $inputs, $user_wrap, $user_data_container, $group_fields;
 var values = {};
 
 
@@ -66,6 +66,13 @@ function editProfile(values) {
 		console.log('ajaxed');
 		profileSlideUp();
 	});
+}
+
+function groupEditable() {
+	$group_fields.hover(
+		function(){ $(this).addClass("editable_view") },
+		function(){ $(this).removeClass("editable_view") }
+	)
 }
 
 // enter pressed after group edit
@@ -186,6 +193,7 @@ $(function() {
 
 	// group variables
 	$group_info = $("#group_information");
+	$group_fields = $("#group_information :input");
 
 	// task variables
 	$task_info = $("#task_information");
@@ -201,6 +209,9 @@ $(function() {
 	//task profile
 	keypressTask();
 	deleteTask();
+
+	// dashed group info box
+	groupEditable()
 
 	// form transitions
 	var transition = false;

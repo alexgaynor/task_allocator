@@ -77,13 +77,13 @@
 .login_form input[type=email]:hover ~ i,
 .login_form input[type=password]:hover ~ i,
 .login_form input[type=text]:hover ~ i {
-    color: #F19181;
+    color: #91E8CB;
 }
  
 .login_form input[type=email]:focus ~ i,
 .login_form input[type=password]:focus ~ i,
 .login_form input[type=text]:focus ~ i {
-    color: #F19181;
+    color: #91E8CB;
 }
  
 .login_form input[type=email]:focus,
@@ -93,7 +93,7 @@
 }
 
 .login_form input[type=submit] {
-	background-color: #88C4B8;
+	background-color: #FCAE49;
 	color: #FFFFFF;
 	border-radius: 3px 3px 3px 3px;      
 	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
@@ -145,7 +145,7 @@
 	margin: -1000px auto 0;
 	overflow: hidden;
 	position: relative;
-		z-index: 5;
+	z-index: -1;
 }
 #user-cont input {
 	border: 1px dashed rgba(00, 00, 00, 0.2);
@@ -178,6 +178,14 @@
 
 /*************************** Dashboard: Groups Info ***************************/
 
+#add-group-cont {
+	background: #5F3C72;
+	color: white;
+	display: none;
+	text-align: center;
+}
+
+
 #user-data-placeholder {
 	clear: both;
 	margin-top: 120px;
@@ -191,7 +199,6 @@
 #user-groups-data-placeholder {
 	padding: 20px;
 	height: 230px;
-	background-color: rgba(00,00,00,0.1);
 }
 
 .group-box-placeholder {
@@ -199,11 +206,13 @@
 	height: 150px;
 	float: left;
 	border: 1px dotted black;
+	text-align: center;
 }
 
 #user-tasks-data-placeholder {
 	width: 100%;
 	padding: 20px;
+	text-align: center;
 	clear: both;
 }
 
@@ -221,24 +230,83 @@
 
 #group_page {
 	width: 90%;
-	margin: 0 auto;
+	margin: 30px auto;
 }
 
 #group_main_info {
-	width: 20%;
-	background-color: pink;
+	width: 50%;
+	margin: 0 auto;
+}
+
+#group_main_info input {
+	width: 100%;
+}
+
+#group_name {
+	font-size: 40px;
+}
+
+#group_desc {
+	font-size: 30px;
 }
 
 #group_details {
 	width: 20%;
-	background-color: green;
+	margin: 20px auto;
+}
+
+#group_details input {
+	width: 100%;
+	font-size: 20px;
 }
 
 .member_photo {
-	width: 250px;
-	height: 250px;
+	width: 200px;
+	height: 200px;
 }
 
+#add_task_container {
+	background-color: rgba(74, 74, 74, 0.1);;
+	border-radius: 10px 10px 0px 0px;
+	-webkit-border-radius: 10px 10px 0px 0px;
+	margin-top: 80px;
+	padding: 5px;
+}
+
+.group_tasks {
+	width: 30%;
+	margin: 10px;
+	float: left;
+	text-align: center;
+}
+
+#group-tasks-placeholder {
+	width: 90%;
+	margin: 30px auto;
+	overflow: hidden;
+}
+
+#group-members-placeholder {
+	padding: 20px;
+	overflow: hidden;
+	/*background-color: rgba(74, 74, 74, 0.1);*/
+}
+
+#add_member_container {
+	/*background-color: rgba(74, 74, 74, 0.4);*/
+}
+
+#member-wrap-placeholder {
+	overflow: hidden;
+	/*background-color: rgba(74, 74, 74, 0.7);*/
+}
+
+.group_member_box {
+	padding: 30px;
+	margin: 0 auto;
+	width: 25%;
+	float: left;
+}
 /*************************** Task: Task Info ***************************/
 
 #task_page {

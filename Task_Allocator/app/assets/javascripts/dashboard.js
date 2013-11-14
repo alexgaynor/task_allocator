@@ -2,7 +2,7 @@ var addGroupButton, addGroupCont, addGroupForm;
 
 $(function () {
 	addGroupCont = $('#add-group-cont');
-	addGroupButton = $('#add-group');
+	addGroupButton = $('#add-icon');
 	addGroupForm = $('#add-group-form');
 	groupsCont = $('#groups-cont');
 	addGroupButton.on('click', function () {
@@ -15,7 +15,7 @@ $(function () {
 
 	addGroupForm.bind('ajax:success', function(evt, data, status, xhr){
 		groupsCont.append(
-			'<div id=' + data.id + ' class="group-box-placeholder"><ul><li><a href="/groups/' + data.id + '">LINK TO GROUP</a></li><li>' + data.group_name + '</li><li>' + data.group_desc + '</li><li>' + data.homebase_location + '</li><li>' + data.group_type +'</li></ul></div>'
+			'<div id=' + data.id + ' class="group-box-placeholder"><a href="/groups/' + data.id + '"><ul><li></li><b><li>' + data.group_name + '</li></b><li>' + data.group_desc + '</li><li>' + data.homebase_location + '</li><li>' + data.group_type +'</li></ul></a></div>'
 		);
 		addGroupForm[0].reset();
 	});

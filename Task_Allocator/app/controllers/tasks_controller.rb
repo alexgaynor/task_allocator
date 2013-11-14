@@ -26,14 +26,11 @@ class TasksController < ApplicationController
 	def destroy
 		id = task_delete_params['task_id']
 		task = Task.find(id)
-		group_id = task.group_id
-		group = Group.find(group_id)
-		task = group.tasks.find(id)
+		@group_id = task.group_id
 		task.destroy
 
-		render :json => task
+		redirect_to group_url
 	end
-
 
 	private
 
