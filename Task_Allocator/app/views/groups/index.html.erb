@@ -25,14 +25,13 @@
 			<%= f.text_area :desc %>
 			<%= f.label "Priority" %>
 			<%= f.text_field :priority %>
-			<%= f.label "Category" %>
-			<%= f.text_field :category %>
 			<%= f.label "Due:" %>
 			<%= f.datetime_field :due_at %>
+			<%= f.label "Category:" %>
+			<%= f.select :category, [['Chore', 'chore'],['Pick-up', 'pick-up'],['Grocery', 'grocery'],['Todo', 'todo']] %>
 			<%= f.label "Assign to:" %>
 			<%= f.select(:owner_id, options_from_collection_for_select(@members, :id, :firstname)) %>
-			<%= f.select :category, [['Chore', 'chore'],['Pick-up', 'pick-up'],['Grocery', 'grocery'],['Todo', 'todo']] %>
-			<%= f.hidden_field :group_id, value: @group.id %>
+			<%= f.hidden_field :creator_id, value: current_user.id %>
 			<%= f.submit "Create Task" %>
 		<% end %>
 	</div><!-- #add_task_container -->
@@ -46,23 +45,17 @@
 					<ul>
 						<li><a href="/tasks/<%= task.id %>"><b><%= task.name %></b></a></li>
 						<li><%= task.desc %></li>
-<<<<<<< HEAD
 						<li>Priority: <%= task.priority %></li>
 						<li>Category: <%= task.category %></li>
 						<li>Karma Value: <%= task.karma_value %></li>
-						<li>Task Owner: <%= task.owner.firstname %></li>
-=======
-						<li><%= task.priority %></li>
-						<li><%= task.category %></li>
-						<li><%= task.karma_value %></li>
 						<li>
+							<!-- there is no task owner in the list of stuff needed to be done -->
 							<% if task.owner %>
-								<%= task.owner.firstname %>
+								Task Owner: <%= task.owner.firstname %>
 							<% else %>
-								Not assigned
+								Task Owner: not assigned
 							<% end %>
 						</li>
->>>>>>> 83d67b61cefdd0ccbea03638421cb60cfc9f2e1b
 					</ul>
 				</div><!--# task-placeholder -->
 			<% end %>
@@ -98,6 +91,7 @@
 					<li><%= task.category %></li>
 					<li><%= task.karma_value %></li>
 					<li>
+						<!-- there should definietely be a task owner, (conditional uncessary) -->
 						<% if task.owner %>
 							<%= task.owner.firstname %>
 						<% else %>
@@ -113,12 +107,12 @@
 	<div id="group-members-placeholder">
 		<% if @is_creator %>
 			<div id="add_member_container">
-			<%= form_for(@member, :as => :new_members, :method => 'post', :url => "/groups/add_member", :html => {:id => "add_member_form"}, :format => :json, :remote => true) do |f| %>
+			<%= form_for(@member, :as => :new_members, :method => "post", :url => "/groups/add_member", :html => {:id => "add_member_form"}, :format => :json, :remote => true) do |f| %>
 				<%= f.text_field :email %>
 				<%= f.hidden_field :group_id, value: @group.id %>
 				<%= f.submit "invite" %>
 			<% end %>
-		</div><!-- #add_member_container -->
+			</div><!-- #add_member_container -->
 		<% end %>
 
 		<div id="member-wrap-placeholder">
@@ -138,7 +132,7 @@
 </div><!-- #group_page -->
 
 
-<script type="text/javascript" src="/assets/group.js"></script>
+<script type="text/javascript" src="/assets/groups.js"></script>
 
 <script id="group_members_template" type="text/x-handlebars-template">
 	<div class="group_member_box">
@@ -146,7 +140,7 @@
 		<ul>
 				<li>{{firstname}} {{lastname}}</li>
 				<li>{{nickname}}</li>
-				<li>{{usernme}}</li>
+				<li>{{username}}</li>
 				<li>{{phone_num}}</li>
 			</ul>
 	</div>

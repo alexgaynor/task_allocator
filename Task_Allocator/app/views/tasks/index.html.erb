@@ -4,23 +4,23 @@
 		<div id="delete_task_button" class="<%= @task.id %>">delete</div>
 
 		<div id="task_main_info">
-			<h4>name</h4> <input type="text" value="<%= @task.name %>" id="name" class="edit_field" />
-			<h4>description</h4> <input type="text" value="<%= @task.desc %>" id="desc" class="edit_field" />
+			<h4>name: </h4><input type="text" value="<%= @task.name %>" id="name" class="edit_field" />
+			<h4>description: </h4><input type="text" value="<%= @task.desc %>" id="desc" class="edit_field" />
 		</div><!-- #task_main_info -->
 
 		<div id="task_details">
-				<h4>priority</h4> <input type="text" value="<%= @task.priority %>" id="priority" class="edit_field" />
-				<h4>category</h4> <input type="text" value="<%= @task.category %>" id="category" class="edit_field" />
-				<h4>cost</h4> <input type="text" value="<%= @task.cost %>" id="cost" class="edit_field" />
-				<h4>karma value</h4> <input type="text" value="<%= @task.karma_value %>" id="karma_value" class="edit_field" />
-				<h4>due at</h4> <input type="text" value="<%= @task.due_at %>" id="due_at" class="edit_field" />
+				<h4>priority: </h4><input type="text" value="<%= @task.priority %>" id="priority" class="edit_field" />
+				<h4>category: </h4><input type="text" value="<%= @task.category %>" id="category" class="edit_field" />
+				<h4>cost: </h4><input type="text" value="<%= @task.cost %>" id="cost" class="edit_field" />
+				<h4>karma value: </h4><input type="text" value="<%= @task.karma_value %>" id="karma_value" class="edit_field" />
+				<h4>due at: </h4><input type="text" value="<%= @task.due_at %>" id="due_at" class="edit_field" />
 
-				<h4>creator</h4> <input type="text" value="<%= @task.name %>" id="creator_firstname" class="edit_field" />
-				<h4>owner</h4> <input type="text" value="<%= @task.name %>" id="owner_firstname" class="edit_field" />
-				<h4>start</h4> <input type="text" value="<%= @task.start_location %>" id="start_location" class="edit_field" />
-				<h4>destination</h4> <input type="text" value="<%= @task.destination_location %>" id="destination_location" class="edit_field" />
-				<h4>end</h4> <input type="text" value="<%= @task.end_location %>" id="end_location" class="edit_field" />
-				<h4>estimated time</h4> <input type="text" value="<%= @task.estimated_time %>" id="estimated_time" class="edit_field" />
+				<h4>creator: </h4><input type="text" value="<%= @task.name %>" id="creator_firstname" class="edit_field" />
+				<h4>owner: </h4><input type="text" value="<%= @task.name %>" id="owner_firstname" class="edit_field" />
+				<h4>start: </h4><input type="text" value="<%= @task.start_location %>" id="start_location" class="edit_field" />
+				<h4>destination: </h4><input type="text" value="<%= @task.destination_location %>" id="destination_location" class="edit_field" />
+				<h4>end: </h4><input type="text" value="<%= @task.end_location %>" id="end_location" class="edit_field" />
+				<h4>estimated time: </h4><input type="text" value="<%= @task.estimated_time %>" id="estimated_time" class="edit_field" />
 
 				<input value="<%= @task.id %>" id="id" hidden="true"/>
 				<input value="<%= @task.creator_id %>" id="creator_id" hidden="true"/>

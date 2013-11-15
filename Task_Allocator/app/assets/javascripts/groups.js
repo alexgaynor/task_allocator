@@ -1,10 +1,22 @@
 var addTaskForm, addTaskCont, addTaskButton, todoTasksCont;
+var members_placeholder, add_member_form;
 
 $(function () {
+	// add new task
 	addTaskButton = $('#add-task');
-	addTaskCont = $('#add-task-cont');
+	addTaskCont = $('#add-task-container');
 	addTaskForm = $('#add-task-form');
 	todoTasksCont = $('#todo-tasks-placeholder');
+
+	// add new member
+	members_placeholder = $("#member-wrap-placeholder:last-child");
+	add_member_form = $('#add_member_form');
+	var group_members_template = Handlebars.compile($('#group_members_template').html());
+
+	add_member_form.bind('ajax:success', function(evt, data, status, xhr){
+			members_placeholder.append(group_members_template(data));
+	});
+
 
 	addTaskButton.on('click', function () {
 		if (addTaskCont.css('display') === 'none' ) {
@@ -20,10 +32,10 @@ $(function () {
 
 	addTaskForm.bind('ajax:success', function(evt, raw_data, status, xhr){
 		// message here
-		// console.log(data);
+		console.log(raw_data);
 		data = raw_data.task;
 		todoTasksCont.append(
-			'<div id=task-placeholder><ul><li><a href="/tasks/' + data.id + '">LINK TO TASK</a></li><li>' + data.name + '</li><li>' + data.desc + '</li><li>' + data.priority + '</li><li>' + data.category +'</li><li>' + raw_data.creator.firstname +'</li></ul></div>'
+			'<div id=task-placeholder><ul><li><a href="/tasks/' + data.id + '"><b>' + data.name + '</b></a></li><li>' + data.desc + '</li><li>Priority: ' + data.priority + '</li><li>Category: ' + data.category +'</li><li>Karma Value: ' + data.karma_value +'</li></ul></div>'
 		);
 		addTaskForm[0].reset();
 	});

@@ -17,7 +17,7 @@ class TasksController < ApplicationController
 
 	def create
 		if task = Task.create(task_params)
-			render json: {task: task.to_json, creator: task.creator.to_json}
+			render json: {task: task, creator: task.creator}
 		else
 			render json: task.errors, status: :unprocessable_entity 
 		end
@@ -29,7 +29,12 @@ class TasksController < ApplicationController
 		@group_id = task.group_id
 		task.destroy
 
-		redirect_to group_url
+		# respond_to do |format|
+		#  format.html { redirect_to dashboard_url }
+		#  format.json { head :no_content }
+		# end
+
+		redirect_to dashboard_url
 	end
 
 	private
