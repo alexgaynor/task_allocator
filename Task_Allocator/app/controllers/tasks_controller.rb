@@ -17,7 +17,12 @@ class TasksController < ApplicationController
 
 	def create
 		if task = Task.create(task_params)
+<<<<<<< HEAD
 			render json: {task: task, creator: task.creator}
+=======
+			send_assignment_sms("#{task.owner.firstname}", "#{task.owner.phone_num}", "tasker.herokuapp.com/tasks/#{task.id}", "#{task.priority}", "#{task.category}", "#{task.name}", "#{task.creator.firstname}")
+			render json: {task: task.to_json, creator: task.creator.to_json}
+>>>>>>> 61a197c612003165fc573be0aed5e737f2e6fb68
 		else
 			render json: task.errors, status: :unprocessable_entity 
 		end
@@ -36,6 +41,27 @@ class TasksController < ApplicationController
 
 		redirect_to dashboard_url
 	end
+
+	def send_assignment_sms(owner_firstname, phone_num, url, priority, category, task_name, creator_firstname)
+		account_sid ='ACcdfbff925e99dd7e80d9cf05200c6baf'
+  		auth_token ='150353c2cc3b539205fb41e5de42ce9c'
+		@client = Twilio::REST::Client.new(account_sid, auth_token)
+
+  		@message = @client.account.messages.create({
+      		:to => "+1"+"#{phone_num}",
+      		:from => "+12038830667",
+      		:body => "Hey #{owner_firstname}, #{creator_firstname} has assigned you a task! The task: #{task_name}, is a #{category} with priority level #{priority}. Go to #{url} to find out more!"
+    	})
+	end
+
+	def can_pass?(task)
+		if task.passes < 2
+			true
+		else
+			false
+		end
+	end
+
 
 	private
 

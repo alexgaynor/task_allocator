@@ -44,6 +44,12 @@ gem 'pry'
 
 gem 'mail'
 
+gem "twilio-ruby"
+
+gem 'fakeweb'
+gem 'rack'
+gem 'rake'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

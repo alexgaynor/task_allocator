@@ -29,12 +29,19 @@ class UserController < Devise::SessionsController
 	def sign_up
 		if user_signed_in?
 			if params[:g]
+<<<<<<< HEAD
 				redirect_to '/groups/#{params[:g]}'
 				    binding.pry
 			else
 				redirect_to "/dashboard"
 				    binding.pry
+=======
+				redirect_string = "/groups/#{params[:g]}"
+			else
+				redirect_string = "/dashboard"
+>>>>>>> 61a197c612003165fc573be0aed5e737f2e6fb68
 			end
+			redirect_to redirect_string
 		end
 		binding.pry
 	end
