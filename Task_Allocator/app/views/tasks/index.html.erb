@@ -1,11 +1,19 @@
 <div id="task_page">
 	<div id="task_information">	
-		
-		<div id="delete_task_button" class="<%= @task.id %>">delete</div>
+		<% if @user.id == @task.creator %>
+			<div id="delete_task_button" class="<%= @task.id %>">delete</div>
+		<% elsif @user.id == @task.owner %>
+			<% if can_pass?(@task) %>
+				<div id="pass-button">Pass</div>
+			<% else %>
+				<div id="shall-not-pass">You shall not pass this task</div>
+			<% end %>
+			<div id="completed-button">Completed</div>
+		<% end %>
 
 		<div id="task_main_info">
 			<h4>name</h4> <input type="text" value="<%= @task.name %>" id="name" class="edit_field" />
-			<h4>description</h4> <input type="text" value="<%= @task.desc %>" id="desc" class="edit_field" />
+			<h4>description</h4><input type="text" value="<%= @task.desc %>" id="desc" class="edit_field" />
 		</div><!-- #task_main_info -->
 
 		<div id="task_details">

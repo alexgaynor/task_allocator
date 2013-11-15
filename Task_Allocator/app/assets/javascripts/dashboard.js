@@ -6,7 +6,12 @@ $(function () {
 	addGroupForm = $('#add-group-form');
 	groupsCont = $('#groups-cont');
 	addGroupButton.on('click', function () {
-		addGroupCont.fadeIn(300);
+		if (addGroupCont.css('display') === 'none'){
+			addGroupCont.fadeIn(300);		
+		} else {
+			addGroupCont.fadeOut(300);
+		}
+
 	});
 
 	addGroupForm.on('submit', function () {

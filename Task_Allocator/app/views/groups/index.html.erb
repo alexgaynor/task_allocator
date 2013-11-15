@@ -32,7 +32,11 @@
 			<%= f.label "Assign to:" %>
 			<%= f.select(:owner_id, options_from_collection_for_select(@members, :id, :firstname)) %>
 			<%= f.select :category, [['Chore', 'chore'],['Pick-up', 'pick-up'],['Grocery', 'grocery'],['Todo', 'todo']] %>
+			<%= f.label "Task end point location" %>
+			<%= f.label "Endpoint street address" %>
+			<%= f.text_field :end_location, :placeholder => "number street, state, zipcode" %>
 			<%= f.hidden_field :group_id, value: @group.id %>
+			<%= f.hidden_field :creator_id, value: @user.id %>
 			<%= f.submit "Create Task" %>
 		<% end %>
 	</div><!-- #add_task_container -->
@@ -46,12 +50,6 @@
 					<ul>
 						<li><a href="/tasks/<%= task.id %>"><b><%= task.name %></b></a></li>
 						<li><%= task.desc %></li>
-<<<<<<< HEAD
-						<li>Priority: <%= task.priority %></li>
-						<li>Category: <%= task.category %></li>
-						<li>Karma Value: <%= task.karma_value %></li>
-						<li>Task Owner: <%= task.owner.firstname %></li>
-=======
 						<li><%= task.priority %></li>
 						<li><%= task.category %></li>
 						<li><%= task.karma_value %></li>
@@ -62,7 +60,6 @@
 								Not assigned
 							<% end %>
 						</li>
->>>>>>> 83d67b61cefdd0ccbea03638421cb60cfc9f2e1b
 					</ul>
 				</div><!--# task-placeholder -->
 			<% end %>
@@ -120,7 +117,6 @@
 			<% end %>
 		</div><!-- #add_member_container -->
 		<% end %>
-
 		<div id="member-wrap-placeholder">
 			<% @members.each do |member| %>
 				<div class="group_member_box">

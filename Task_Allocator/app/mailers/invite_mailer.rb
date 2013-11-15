@@ -4,7 +4,7 @@ class InviteMailer < ActionMailer::Base
   def group_invite (email, group)
   	@email = email
   	@group = group
-  	@url = "http://localhost:3000/users/sign_up?g=#{@group}"
-  	mail(to: @email, subject: "Taskalot group invite.")
+  	@url = "http://localhost:3000/users/sign_up?g=#{@group.id}"
+  	mail(to: @email, subject: "Tasker group invite.")
   end
 end

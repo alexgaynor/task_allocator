@@ -8,10 +8,11 @@ class UserController < Devise::SessionsController
 	def sign_up
 		if user_signed_in?
 			if params[:g]
-				redirect_to '/groups/#{params[:g]}'
+				redirect_string = "/groups/#{params[:g]}"
 			else
-				redirect_to "/dashboard"
+				redirect_string = "/dashboard"
 			end
+			redirect_to redirect_string
 		end
 	end
 

@@ -71,28 +71,30 @@
 			
 			<div id="todo-placeholder">
 				<h1>Tasks ToDo</h1>
-				<ul>
-					<% @todo_tasks.each do |todo| %>
-						<li><b><%= todo.name %></b></li>
-						<li>Category: <%= todo.category %></li>
-						<li>Priority: <%= todo.priority %></li>
-						<li>Estimated time: <%= todo.estimated_time %></li>
-						<li>Cost: $<%= todo.cost %></li>
-					<% end %>
-				</ul>
+				<% @todo_tasks.each do |todo| %>
+					<a href="/tasks/<%= todo.id %>"><div class="todo-task">
+						<ul>
+							<li><b><%= todo.name %></b></li>
+							<li>Category: <%= todo.category %></li>
+							<li>Priority: <%= todo.priority %></li>
+							<li>Estimated time: <%= todo.estimated_time %></li>
+							<li>Cost: $<%= todo.cost %></li>
+						</ul>
+					</div></a>
+				<% end %>
 			</div><!-- #todo-placeholder -->
 
 			<div id="done-placeholder">
-				<h1>Completed Tasks</h1>
-				<ul>
-					<% @completed_tasks.each do |comp| %>
+				<% @completed_tasks.each do |comp| %>
+				<a href="/tasks/<%= comp.id %>"><div class="completed-tasks">	<h1>Completed Tasks</h1>
+					<ul>
 						<li><b><%= comp.name %></b></li>
 						<li>Priority: <%= comp.priority %></li>
 						<li>Category: <%= comp.category %></li>
 						<li>Cost: $<%= comp.cost %></li>
 						<li>Estimated time: <%= comp.estimated_time %></li>
-					<% end %>
-				</ul>
+					</ul>
+				<% end %>
 			</div><!-- #done-placeholder -->
 
 		</div><!-- #user-tasks-data-placeholder -->

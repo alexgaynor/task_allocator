@@ -34,13 +34,13 @@ function keypressProfile() {
 	});
 }
 
-// function confirmChanges(e) {
-// 	console.log('confirm changes hit');
-// 	console.log(e.target);
-// 	if (!$inputs.is(e.target)) {
-// 		console.log(e);
-// 	}
-// }
+function confirmChanges(e) {
+	console.log('confirm changes hit');
+	console.log(e.target);
+	if (!$inputs.is(e.target)) {
+		console.log(e);
+	}
+}
 
 // submit profile edits
 function submitChanges(e) {

@@ -50,6 +50,7 @@ class GroupsController < ApplicationController
 	end
 
 	def update
+		binding.pry
 		id = group_edit_params['id']
 		group = Group.find(id)
 		group.update_attributes!(group_edit_params)
@@ -61,12 +62,12 @@ class GroupsController < ApplicationController
 	end
 
 	def add_member
+		binding.pry
 		id = members_params['group_id']
 		@group = Group.find(id)
 		members = @group.users
 
 		email = members_params['email']
-		binding.pry
 		if user = User.find_by_email(email)
 			group = Group.find(id)
 			user.groups << group
