@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
-    if session[:group_id]
+    if params[:g] = session[:group_id]
       group_id = session[:group_id]
       session.delete(:group_id)
       # create a way to add them to the group
@@ -9,14 +9,12 @@ class RegistrationsController < Devise::RegistrationsController
       user = current_user
       group = Group.find(group_id)
       user.groups << group
-      binding.pry 
-      # render :json => user
+      render :json => user
 
       redirect_string = "/groups/#{group_id}" 
     else
       redirect_string = "/dashboard"
     end
-    binding.pry
     redirect_string
   end
 

@@ -34,6 +34,7 @@ $(function () {
 		// message here
 		console.log(raw_data);
 		data = raw_data.task;
+		console.log('trying to reset form');
 		todoTasksCont.append(
 			'<div id=task-placeholder><ul><li><a href="/tasks/' + data.id + '"><b>' + data.name + '</b></a></li><li>' + data.desc + '</li><li>Priority: ' + data.priority + '</li><li>Category: ' + data.category +'</li><li>Karma Value: ' + data.karma_value +'</li></ul></div>'
 		);
