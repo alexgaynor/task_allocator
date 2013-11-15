@@ -17,7 +17,7 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_string = "/dashboard"
     end
     binding.pry
-    redirect_to redirect_string
+    redirect_string
   end
 
   # def edit
