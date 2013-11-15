@@ -22,7 +22,9 @@ $(function () {
 		// message here
 		// console.log(data);
 		data = raw_data.task;
+		console.log('trying to reset form');
 		todoTasksCont.append(
+
 			'<div id=task-placeholder><ul><li><a href="/tasks/' + data.id + '">LINK TO TASK</a></li><li>' + data.name + '</li><li>' + data.desc + '</li><li>' + data.priority + '</li><li>' + data.category +'</li><li>' + raw_data.creator.firstname +'</li></ul></div>'
 		);
 		addTaskForm[0].reset();

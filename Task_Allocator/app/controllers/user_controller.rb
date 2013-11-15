@@ -18,11 +18,11 @@ class UserController < Devise::SessionsController
 
 	def sign_out
 		if session["success"]
-			redirect_to '/'
+			redirect_string '/'
 		else 
-			redirect_to '/dashboard'
+			redirect_string '/dashboard'
 		end
-
+		redirect_to redirect_string
 	end
 
 
