@@ -1,5 +1,4 @@
 <div id="sign_in_modal" class="reveal-modal medium login_form">
-  <h3>Sign in</h3>
 
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:id => "sign_in_user"}) do |f| %>
     <%= devise_error_messages! %>

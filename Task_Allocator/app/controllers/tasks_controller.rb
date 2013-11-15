@@ -17,8 +17,12 @@ class TasksController < ApplicationController
 
 	def create
 		if task = Task.create(task_params)
+<<<<<<< HEAD
+			render json: {task: task, creator: task.creator}
+=======
 			send_assignment_sms("#{task.owner.firstname}", "#{task.owner.phone_num}", "tasker.herokuapp.com/tasks/#{task.id}", "#{task.priority}", "#{task.category}", "#{task.name}", "#{task.creator.firstname}")
 			render json: {task: task.to_json, creator: task.creator.to_json}
+>>>>>>> 61a197c612003165fc573be0aed5e737f2e6fb68
 		else
 			render json: task.errors, status: :unprocessable_entity 
 		end
@@ -30,7 +34,12 @@ class TasksController < ApplicationController
 		@group_id = task.group_id
 		task.destroy
 
-		redirect_to group_url
+		# respond_to do |format|
+		#  format.html { redirect_to dashboard_url }
+		#  format.json { head :no_content }
+		# end
+
+		redirect_to dashboard_url
 	end
 
 	def send_assignment_sms(owner_firstname, phone_num, url, priority, category, task_name, creator_firstname)

@@ -29,7 +29,8 @@ header {
 	background: #94E1D5;
 	height: 100px;
 	margin-top: -20px; 
-	z-index: 10;
+	position: relative;
+ 	z-index: 1;
 }
 
 nav ul li {

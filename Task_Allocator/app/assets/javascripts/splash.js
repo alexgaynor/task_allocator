@@ -60,7 +60,7 @@ function editProfile(values) {
 	$.ajax({
 		dataType: "json",
 		method: "post",
-		url: "/users/update",
+		url: "/users/edit",
 		data: {user: values}
 	}).success(function() {
 		console.log('ajaxed');
@@ -87,8 +87,6 @@ function keypressGroup() {
 // submit group changes
 function submitChangesGroup(e) {
 	$("#group_information :input").each(function() {
-		// console.log('shit');
-		// console.log($(this));
 		var key = $(this).attr('id');
 		var value = $(this).val();
 		values[key] = value;
@@ -100,12 +98,10 @@ function submitChangesGroup(e) {
 
 // ajax update group attributes
 function editProfileGroup(values) {
-	// console.log(values);
 	var id = values.id;
 	var url = "/groups/" + id;
 	var group = values
 	// delete group.id;
-	console.log(group);
 
 	$.ajax({
 		dataType: "json",
@@ -142,8 +138,7 @@ function submitChangesTask(e) {
 function editTask(values) {
 	var id = values.id;
 	delete values.creator_firstname && delete values.owner_firstname
-	// var url = "/tasks/" + id;
-	console.log(values);
+	
 	$.ajax({
 		dataType: "json",
 		method: "post",
@@ -211,7 +206,7 @@ $(function() {
 	deleteTask();
 
 	// dashed group info box
-	groupEditable()
+	groupEditable();
 
 	// form transitions
 	var transition = false;

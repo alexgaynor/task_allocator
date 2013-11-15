@@ -9,12 +9,11 @@ class GroupsController < ApplicationController
 		@members = @group.users
 		# @task_categories = [['Chore', 'chore'],['Pick-up', 'pick-up'],['Grocery', 'grocery'],['Todo', 'todo']]
 
-		@member = User.new
-
 		if @user.id == @group.creator_id
 			@is_creator = true
 		end
 
+		@task = Task.new
 		@tasks_todo = []
 		@completed_tasks = []
 		@tasks_in_prog = []
@@ -30,7 +29,7 @@ class GroupsController < ApplicationController
 			end
 		end
 
-		@task = Task.new
+		@member = User.new
 	end
 
 	def create
@@ -49,8 +48,10 @@ class GroupsController < ApplicationController
 
 	end
 
+	def edit
+	end
+
 	def update
-		binding.pry
 		id = group_edit_params['id']
 		group = Group.find(id)
 		group.update_attributes!(group_edit_params)
@@ -68,6 +69,7 @@ class GroupsController < ApplicationController
 		members = @group.users
 
 		email = members_params['email']
+
 		if user = User.find_by_email(email)
 			group = Group.find(id)
 			user.groups << group

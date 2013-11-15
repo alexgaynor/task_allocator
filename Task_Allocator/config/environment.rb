@@ -5,12 +5,12 @@ require File.expand_path('../application', __FILE__)
 TaskAllocator::Application.initialize!
 
 
-# ActionMailer::Base.smtp_settings = {
-#   :address        => 'smtp.sendgrid.net',
-#   :port           => '587',
-#   :authentication => :plain,
-#   :user_name      => 'ohsun14',
-#   :password       => 'benny123',
-#   :domain         => 'heroku.com',
-#   :enable_starttls_auto => true
-# }
+ActionMailer::Base.smtp_settings = {
+  :address        => 'smtp.sendgrid.net',
+  :port           => '587',
+  :authentication => :plain,
+  :user_name      => 'jamalp',
+  :password       => 'foobar123',
+  :domain         => 'heroku.com',
+  :enable_starttls_auto => true
+}
