@@ -63,7 +63,6 @@ class GroupsController < ApplicationController
 	end
 
 	def add_member
-		binding.pry
 		id = members_params['group_id']
 		@group = Group.find(id)
 		members = @group.users
